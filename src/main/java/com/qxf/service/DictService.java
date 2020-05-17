@@ -11,7 +11,7 @@ import java.util.List;
  * @since 2020-05-17 11:25:37
  */
 public interface DictService {
-
+    List<Dict> getDictListByDictTypeCode(String dictTypeCode);
     /**
      * 通过ID查询单条数据
      *

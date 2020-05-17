@@ -12,6 +12,10 @@
         <result property="parentId" column="parent_id" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <select id="getDictListByDictTypeCode" parameterType="string" resultMap="DictMap">
+        SELECT dict_code, dict_value FROM dict WHERE dict_type_code = #{dictTypeCode}
+    </select>
+
     <!--查询单个-->
     <select id="queryById" resultMap="DictMap">
         select

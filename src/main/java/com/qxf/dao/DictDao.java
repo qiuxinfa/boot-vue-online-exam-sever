@@ -13,6 +13,8 @@ import java.util.List;
  */
 public interface DictDao {
 
+    List<Dict> getDictListByDictTypeCode(String dictTypeCode);
+
     /**
      * 通过ID查询单条数据
      *

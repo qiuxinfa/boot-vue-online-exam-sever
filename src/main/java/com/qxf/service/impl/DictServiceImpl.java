@@ -19,6 +19,11 @@ public class DictServiceImpl implements DictService {
     @Resource
     private DictDao dictDao;
 
+    @Override
+    public List<Dict> getDictListByDictTypeCode(String dictTypeCode) {
+        return dictDao.getDictListByDictTypeCode(dictTypeCode);
+    }
+
     /**
      * 通过ID查询单条数据
      *

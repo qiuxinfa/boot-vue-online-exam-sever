@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Description: com.qxf
  */
 @SpringBootApplication
-@MapperScan("com.qxf.mapper")
+@MapperScan("com.qxf.dao")
 public class BootVueOnlineExam {
     public static void main(String[] args) {
         SpringApplication.run(BootVueOnlineExam.class,args);
