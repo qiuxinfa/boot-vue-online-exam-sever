@@ -1,17 +1,28 @@
-package com.qxf.pojo;
+package com.qxf.entity;
 
 import java.io.Serializable;
 
 /**
- * @ClassName UserRole
- * @Description TODO
- * @Author qiuxinfa
- * @Date 2020/5/6 20:23
- **/
-public class UserRole implements Serializable{
+ * 用户-角色(UserRole)实体类
+ *
+ * @author makejava
+ * @since 2020-05-17 11:25:40
+ */
+public class UserRole implements Serializable {
+    private static final long serialVersionUID = -32367301089510524L;
+    /**
+    * 主键id
+    */
     private String id;
+    /**
+    * 用户id
+    */
     private String userId;
+    /**
+    * 角色id
+    */
     private String roleId;
+
 
     public String getId() {
         return id;
@@ -37,12 +48,4 @@ public class UserRole implements Serializable{
         this.roleId = roleId;
     }
 
-    @Override
-    public String toString() {
-        return "UserRole{" +
-                "id='" + id + '\'' +
-                ", userId='" + userId + '\'' +
-                ", roleId='" + roleId + '\'' +
-                '}';
-    }
 }

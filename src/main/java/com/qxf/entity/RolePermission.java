@@ -1,17 +1,28 @@
-package com.qxf.pojo;
+package com.qxf.entity;
 
 import java.io.Serializable;
 
 /**
- * @ClassName RolePermission
- * @Description TODO
- * @Author qiuxinfa
- * @Date 2020/5/6 20:28
- **/
-public class RolePermission implements Serializable{
+ * 角色-权限(RolePermission)实体类
+ *
+ * @author makejava
+ * @since 2020-05-17 11:25:40
+ */
+public class RolePermission implements Serializable {
+    private static final long serialVersionUID = -24408052380504446L;
+    /**
+    * 主键id
+    */
     private String id;
+    /**
+    * 角色id
+    */
     private String roleId;
+    /**
+    * 鏉冮檺id
+    */
     private String permissionId;
+
 
     public String getId() {
         return id;
@@ -37,12 +48,4 @@ public class RolePermission implements Serializable{
         this.permissionId = permissionId;
     }
 
-    @Override
-    public String toString() {
-        return "RolePermission{" +
-                "id='" + id + '\'' +
-                ", roleId='" + roleId + '\'' +
-                ", permissionId='" + permissionId + '\'' +
-                '}';
-    }
 }

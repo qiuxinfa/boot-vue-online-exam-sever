@@ -2,12 +2,15 @@ package com.qxf.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qxf.pojo.JwtVo;
-import com.qxf.pojo.User;
+import com.qxf.dto.JwtDto;
+import com.qxf.entity.User;
 import com.qxf.security.config.TokenProvider;
 import com.qxf.security.property.SecurityProperties;
 import com.qxf.service.UserService;
-import io.jsonwebtoken.ExpiredJwtException;
+import com.qxf.util.EnumCode;
+import com.qxf.util.ResultUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,10 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+
 /**
  * @ClassName UserController
  * @Description TODO
@@ -80,21 +82,21 @@ public class UserController {
     }
 
     @GetMapping("/info")
-    public ResponseEntity<Object> getUserInfo(){
+    public ResultUtil getUserInfo(){
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Map<String,Object> authInfo = new HashMap<String,Object>(2){{
             put("name",userDetails == null ? "未知用户" : userDetails.getUsername());
             put("avatar", "");
         }};
-        return ResponseEntity.ok(authInfo);
+        return new ResultUtil(EnumCode.OK.getValue(),"获取用户信息成功",authInfo);
     }
 
     //刷新token  1589105115025
     @PostMapping("/refreshToken")
-    public ResponseEntity<Object> refreshToken(@RequestBody JwtVo jwtVo) throws JsonProcessingException {
+    public ResponseEntity<Object> refreshToken(@RequestBody JwtDto jwtDto) throws JsonProcessingException {
         Map<String,Object> authInfo = new HashMap<>(3);
-        String token = jwtVo.getToken();
-        String username = jwtVo.getUsername();
+        String token = jwtDto.getToken();
+        String username = jwtDto.getUsername();
         //检查token格式
         if (token != null && token.startsWith(securityProperties.getTokenStartWith())){
             //去掉头部

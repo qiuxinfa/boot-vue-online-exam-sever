@@ -1,23 +1,33 @@
-package com.qxf.pojo;
+package com.qxf.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
 
 /**
- *@ClassName Role
- *@Description TODO
- *@Author qiuxinfa
- *@Date 2020/5/5 23:18
- **/
-public class Role implements GrantedAuthority,Serializable{
+ * 角色(Role)实体类
+ *
+ * @author makejava
+ * @since 2020-05-17 11:25:40
+ */
+public class Role implements Serializable,GrantedAuthority {
+    private static final long serialVersionUID = -93092660464974071L;
+    /**
+    * 主键id
+    */
     private String id;
+    /**
+    * 角色名称
+    */
     private String name;
+    /**
+    * 角色描述
+    */
     private String description;
 
     @Override
     public String getAuthority() {
-        return name;
+        return getName();
     }
 
     public String getId() {
@@ -42,15 +52,6 @@ public class Role implements GrantedAuthority,Serializable{
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
     }
 
 }

@@ -1,11 +1,10 @@
-package com.qxf.mapper;
+package com.qxf.dao;
 
-import com.qxf.pojo.Role;
-import org.apache.ibatis.annotations.Select;
+import com.qxf.entity.Role;
 
 import java.util.List;
 
-public interface RoleMapper {
+public interface RoleDao {
     /*
      * @Author qiuxinfa
      * @Description 根据用户id，查询角色列表

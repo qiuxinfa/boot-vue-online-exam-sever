@@ -1,12 +1,12 @@
-package com.qxf.pojo;
+package com.qxf.dto;
 
 /**
- * @ClassName JwtVo
+ * @ClassName JwtDto
  * @Description TODO
  * @Author qiuxinfa
- * @Date 2020/5/11 0:10
+ * @Date 2020/5/17 11:32
  **/
-public class JwtVo {
+public class JwtDto {
     private String token;
     private String username;
 

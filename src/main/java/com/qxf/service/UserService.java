@@ -1,6 +1,6 @@
 package com.qxf.service;
 
-import com.qxf.pojo.User;
+import com.qxf.entity.User;
 
 import java.util.List;
 

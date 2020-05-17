@@ -1,21 +1,42 @@
-package com.qxf.pojo;
+package com.qxf.entity;
 
 import java.io.Serializable;
 
 /**
- * @ClassName Dict
- * @Description TODO
- * @Author qiuxinfa
- * @Date 2020/5/6 20:30
- **/
-public class Dict implements Serializable{
+ * 字典(Dict)实体类
+ *
+ * @author makejava
+ * @since 2020-05-17 11:25:33
+ */
+public class Dict implements Serializable {
+    private static final long serialVersionUID = -73404928967728707L;
+    /**
+    * 主键id
+    */
     private String id;
+    /**
+    * 字典代码
+    */
     private String dictCode;
+    /**
+    * 字典值
+    */
     private String dictValue;
+    /**
+    * 字典类型代码
+    */
     private String dictTypeCode;
+    /**
+    * 字典描述
+    */
     private String dictDesc;
+    /**
+    * 字典排序
+    */
     private Integer dictOrder;
+    
     private String parentId;
+
 
     public String getId() {
         return id;
@@ -73,16 +94,4 @@ public class Dict implements Serializable{
         this.parentId = parentId;
     }
 
-    @Override
-    public String toString() {
-        return "Dict{" +
-                "id='" + id + '\'' +
-                ", dictCode='" + dictCode + '\'' +
-                ", dictValue='" + dictValue + '\'' +
-                ", dictTypeCode='" + dictTypeCode + '\'' +
-                ", dictDesc='" + dictDesc + '\'' +
-                ", dictOrder=" + dictOrder +
-                ", parentId='" + parentId + '\'' +
-                '}';
-    }
 }

@@ -1,9 +1,10 @@
 package com.qxf.service.impl;
 
-import com.qxf.mapper.RoleMapper;
-import com.qxf.mapper.UserMapper;
-import com.qxf.pojo.Role;
-import com.qxf.pojo.User;
+import com.qxf.dao.RoleDao;
+import com.qxf.dao.UserDao;
+
+import com.qxf.entity.Role;
+import com.qxf.entity.User;
 import com.qxf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,17 +23,17 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService,UserDetailsService{
     @Autowired
-    private UserMapper userMapper;
+    private UserDao userDao;
 
     @Autowired
-    private RoleMapper roleMapper;
+    private RoleDao roleDao;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userMapper.getUserByUsername(username);
+        User user = userDao.getUserByUsername(username);
         if (user != null){
             //设置角色
-            List<Role> roles = roleMapper.getRolesByUserId(user.getId());
+            List<Role> roles = roleDao.getRolesByUserId(user.getId());
             user.setRoles(roles);
         }
         return user;
@@ -40,15 +41,15 @@ public class UserServiceImpl implements UserService,UserDetailsService{
 
     @Override
     public List<User> getUserList() {
-        return userMapper.getUserList();
+        return userDao.getUserList();
     }
 
     @Override
     public User getUserByUsername(String username) {
-        User user = userMapper.getUserByUsername(username);
+        User user = userDao.getUserByUsername(username);
         if (user != null){
             //设置角色
-            List<Role> roles = roleMapper.getRolesByUserId(user.getId());
+            List<Role> roles = roleDao.getRolesByUserId(user.getId());
             user.setRoles(roles);
         }
         return user;

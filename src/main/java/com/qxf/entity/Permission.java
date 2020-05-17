@@ -1,20 +1,40 @@
-package com.qxf.pojo;
+package com.qxf.entity;
 
 import java.io.Serializable;
 
 /**
- * @ClassName Permission
- * @Description TODO
- * @Author qiuxinfa
- * @Date 2020/5/6 20:25
- **/
-public class Permission implements Serializable{
+ * 权限(Permission)实体类
+ *
+ * @author makejava
+ * @since 2020-05-17 11:25:40
+ */
+public class Permission implements Serializable {
+    private static final long serialVersionUID = 752387910865128984L;
+    /**
+    * 主键id
+    */
     private String id;
+    /**
+    * 权限名称
+    */
     private String name;
+    /**
+    * 权限路径
+    */
     private String url;
+    /**
+    * 权限类型
+    */
     private Integer type;
+    /**
+    * 父权限id
+    */
     private String parentId;
+    /**
+    * 排序号
+    */
     private Integer sort;
+
 
     public String getId() {
         return id;
@@ -64,15 +84,4 @@ public class Permission implements Serializable{
         this.sort = sort;
     }
 
-    @Override
-    public String toString() {
-        return "Permission{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", url='" + url + '\'' +
-                ", type=" + type +
-                ", parentId='" + parentId + '\'' +
-                ", sort=" + sort +
-                '}';
-    }
 }

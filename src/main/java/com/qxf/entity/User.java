@@ -1,4 +1,4 @@
-package com.qxf.pojo;
+package com.qxf.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,21 +9,51 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @ClassName User
- * @Description TODO
- * @Author qiuxinfa
- * @Date 2020/5/5 23:33
- **/
-public class User implements UserDetails,Serializable{
+ * 用户(User)实体类
+ *
+ * @author makejava
+ * @since 2020-05-17 11:25:40
+ */
+public class User implements Serializable,UserDetails {
+    private static final long serialVersionUID = 693072874205812699L;
+    /**
+    * 主键id
+    */
     private String id;
+    /**
+    * 用户名
+    */
     private String username;
+    /**
+    * 密码
+    */
     private String password;
+    /**
+    * 邮箱
+    */
     private String email;
+    /**
+    * 头像地址
+    */
     private String photoUrl;
+    /**
+    * 是否可用：1可用，0不可用
+    */
     private Integer enable;
+    
     private Date createTime;
+    
     private Date lastLoginTime;
+
     private List<Role> roles;
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
     public String getId() {
         return id;
@@ -54,7 +84,7 @@ public class User implements UserDetails,Serializable{
 
     @Override
     public boolean isEnabled() {
-        return enable == 1;
+        return getEnable() == 1;
     }
 
     public void setUsername(String username) {
@@ -63,7 +93,7 @@ public class User implements UserDetails,Serializable{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles();
+        return null;
     }
 
     public String getPassword() {
@@ -114,25 +144,4 @@ public class User implements UserDetails,Serializable{
         this.lastLoginTime = lastLoginTime;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", photoUrl='" + photoUrl + '\'' +
-                ", enable=" + enable +
-                ", createTime=" + createTime +
-                ", lastLoginTime=" + lastLoginTime +
-                '}';
-    }
 }
