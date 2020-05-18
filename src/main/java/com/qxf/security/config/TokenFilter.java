@@ -1,6 +1,6 @@
 package com.qxf.security.config;
 
-import com.qxf.pojo.User;
+import com.qxf.entity.User;
 import com.qxf.security.property.SecurityProperties;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.security.core.Authentication;

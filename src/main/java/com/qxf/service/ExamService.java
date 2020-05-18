@@ -1,8 +1,10 @@
 package com.qxf.service;
 
+import com.github.pagehelper.Page;
 import com.qxf.entity.Exam;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 考试安排(Exam)表服务接口
@@ -11,6 +13,10 @@ import java.util.List;
  * @since 2020-05-17 11:25:40
  */
 public interface ExamService {
+
+    Map<String,List<?>> getExamDetail(Exam exam);
+
+    List<Exam> getListByPage(Page<Exam> page, String name);
 
     /**
      * 通过ID查询单条数据

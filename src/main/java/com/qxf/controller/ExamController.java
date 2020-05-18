@@ -1,12 +1,17 @@
 package com.qxf.controller;
 
+import com.github.pagehelper.Page;
 import com.qxf.entity.Exam;
 import com.qxf.service.ExamService;
+import com.qxf.util.EnumCode;
+import com.qxf.util.ResultUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 考试安排(Exam)表控制层
@@ -23,15 +28,24 @@ public class ExamController {
     @Resource
     private ExamService examService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public Exam selectOne(String id) {
-        return this.examService.queryById(id);
+    //分页查询考试列表
+    @GetMapping("/list")
+    public Object getListByPage(Integer startPage,Integer pageSize,String name){
+        Page<Exam> page = new Page<>(startPage,pageSize);
+        List<Exam> list = examService.getListByPage(page,name);
+        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,page.getTotal());
     }
 
+    /*
+     * @Author qiuxinfa
+     * @Description 获取试卷详情
+     * @Date  2020/5/17 21:36
+     * @Param [exam]
+     * @return java.lang.Object
+     **/
+    @GetMapping("/detail")
+    public Object getExamDetail(Exam exam){
+        Map<String, List<?>> examDetail = examService.getExamDetail(exam);
+        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",examDetail);
+    }
 }

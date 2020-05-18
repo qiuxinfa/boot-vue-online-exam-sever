@@ -18,6 +18,13 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+# 分页配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
 #jwt
 jwt:
   header: Authorization

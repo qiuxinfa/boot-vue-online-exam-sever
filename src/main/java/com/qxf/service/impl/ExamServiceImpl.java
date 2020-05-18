@@ -1,12 +1,17 @@
 package com.qxf.service.impl;
 
-import com.qxf.dao.ExamDao;
-import com.qxf.entity.Exam;
+import com.github.pagehelper.Page;
+import com.qxf.dao.*;
+import com.qxf.entity.*;
 import com.qxf.service.ExamService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 考试安排(Exam)表服务实现类
@@ -18,6 +23,93 @@ import java.util.List;
 public class ExamServiceImpl implements ExamService {
     @Resource
     private ExamDao examDao;
+
+    @Resource
+    private SingleQuestionDao singleQuestionDao;
+
+    @Resource
+    private MultiQuestionDao multiQuestionDao;
+
+    @Resource
+    private JudgeQuestionDao judgeQuestionDao;
+
+    @Resource
+    private FillQuestionDao fillQuestionDao;
+
+    @Override
+    public Map<String, List<?>> getExamDetail(Exam exam) {
+        Map<String, List<?>> map = new HashMap<>(4);
+        //解析每种类型题目的ids
+        String singleIds = exam.getSingleIds();
+        String multiIds = exam.getMultiIds();
+        String judgeIds = exam.getJudgeIds();
+        String fillIds = exam.getFillIds();
+        //填空题
+        if (!StringUtils.isEmpty(fillIds)){
+            String[] ids = fillIds.split(",");
+            List<FillQuestion> fillQuestionList = new ArrayList<>(ids.length);
+            FillQuestion fillQuestion = null;
+            for (String id : ids){
+                fillQuestion = fillQuestionDao.queryById(id);
+                fillQuestionList.add(fillQuestion);
+
+            }
+            map.put("0",fillQuestionList);
+        }else {
+            map.put("0",new ArrayList());
+        }
+
+        //判断题
+        if (!StringUtils.isEmpty(judgeIds)){
+            String[] ids = judgeIds.split(",");
+            List<JudgeQuestion> judgeQuestionList = new ArrayList<>(ids.length);
+            JudgeQuestion judgeQuestion = null;
+            for (String id : ids){
+                judgeQuestion = judgeQuestionDao.queryById(id);
+                judgeQuestionList.add(judgeQuestion);
+
+            }
+            map.put("1",judgeQuestionList);
+        }else {
+            map.put("1",new ArrayList());
+        }
+
+        //单选题
+        if (!StringUtils.isEmpty(singleIds)){
+            String[] ids = singleIds.split(",");
+            List<SingleQuestion> singleQuestionList = new ArrayList<>(ids.length);
+            SingleQuestion singleQuestion = null;
+            for (String id : ids){
+                singleQuestion = singleQuestionDao.queryById(id);
+                singleQuestionList.add(singleQuestion);
+
+            }
+            map.put("2",singleQuestionList);
+        }else {
+            map.put("2",new ArrayList());
+        }
+        //多选题
+        if (!StringUtils.isEmpty(multiIds)){
+            String[] ids = multiIds.split(",");
+            List<MultiQuestion> multiQuestionList = new ArrayList<>(ids.length);
+            MultiQuestion multiQuestion = null;
+            for (String id : ids){
+                multiQuestion = multiQuestionDao.queryById(id);
+                multiQuestionList.add(multiQuestion);
+
+            }
+            map.put("3",multiQuestionList);
+        }else {
+            map.put("3",new ArrayList());
+        }
+
+        return map;
+    }
+
+    @Override
+    public List<Exam> getListByPage(Page<Exam> page, String name) {
+        return examDao.getListByPage(page,name);
+    }
 
     /**
      * 通过ID查询单条数据
