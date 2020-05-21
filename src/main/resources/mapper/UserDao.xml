@@ -6,8 +6,49 @@
     SELECT * FROM user WHERE username = #{username}
   </select>
 
-  <select id="getUserList" resultType="user">
+  <select id="getListByPage" resultType="user">
     SELECT * FROM user
+      WHERE 1 = 1
+      <if test="username!=null and username!=''">
+        AND username LIKE CONCAT('%',#{username},'%')
+      </if>
   </select>
+
+  <update id="updateUser" parameterType="com.qxf.entity.User">
+    UPDATE user
+    <set>
+      <if test="username != null and username != ''">
+        username = #{username},
+      </if>
+      <if test="password != null and password != ''">
+        password = #{password},
+      </if>
+      <if test="email != null and email != ''">
+        email = #{email},
+      </if>
+      <if test="photoUrl != null and photoUrl != ''">
+        photo_url = #{photoUrl},
+      </if>
+      <if test="enable != null">
+        enable = #{enable},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
+  <insert id="addUser" parameterType="com.qxf.entity.User">
+    INSERT INTO user(id,username,password,email,photo_url,enable,create_time,last_login_time)
+    VALUES (#{id},#{username},#{password},#{email},#{photoUrl},#{enable},#{createTime},#{lastLoginTime})
+  </insert>
+
+  <delete id="deleteUser" parameterType="string">
+    UPDATE user set enable=0 WHERE id = #{id}
+  </delete>
 
 </mapper>

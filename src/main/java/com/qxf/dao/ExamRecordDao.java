@@ -1,5 +1,7 @@
 package com.qxf.dao;
 
+import com.github.pagehelper.Page;
+import com.qxf.dto.ExamRecordDto;
 import com.qxf.entity.ExamRecord;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,6 +14,14 @@ import java.util.List;
  * @since 2020-05-17 11:25:40
  */
 public interface ExamRecordDao {
+    /*
+     * @Author qiuxinfa
+     * @Description 分页查询考试记录
+     * @Date  2020/5/20 19:30
+     * @Param [page, name]
+     * @return java.util.List<com.qxf.entity.ExamRecord>
+     **/
+    List<ExamRecordDto> getListByPage(Page<ExamRecordDto> page, @Param("name") String name, @Param("userId") String userId);
 
     /**
      * 通过ID查询单条数据

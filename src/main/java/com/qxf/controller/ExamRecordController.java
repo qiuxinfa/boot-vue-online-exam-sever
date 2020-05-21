@@ -1,12 +1,16 @@
 package com.qxf.controller;
 
+import com.github.pagehelper.Page;
+import com.qxf.dto.ExamRecordDto;
 import com.qxf.entity.ExamRecord;
 import com.qxf.service.ExamRecordService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.qxf.util.EnumCode;
+import com.qxf.util.ResultUtil;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 考试记录表(ExamRecord)表控制层
@@ -23,6 +27,28 @@ public class ExamRecordController {
     @Resource
     private ExamRecordService examRecordService;
 
+    /*
+     * @Author qiuxinfa
+     * @Description 添加考试记录
+     * @Date  2020/5/20 19:26
+     * @Param [examRecord]
+     * @return java.lang.Object
+     **/
+    @PostMapping("/add")
+    public Object addExamRecord(@RequestBody ExamRecord examRecord){
+        Double finalScore = examRecord.getFinalScore();
+        examRecordService.insert(examRecord);
+        return new ResultUtil(EnumCode.OK.getValue(),"考试结束，此次考试成绩为： "+finalScore+" 分");
+    }
+
+    //分页查询考试记录列表
+    @GetMapping("/list")
+    public Object getListByPage(Integer startPage,Integer pageSize,String name, String userId){
+        Page<ExamRecordDto> page = new Page<>(startPage,pageSize);
+        //查询自己的考试记录
+        List<ExamRecordDto> list = examRecordService.getListByPage(page,name,userId);
+        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,page.getTotal());
+    }
     /**
      * 通过主键查询单条数据
      *

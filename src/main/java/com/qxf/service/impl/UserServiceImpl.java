@@ -1,5 +1,6 @@
 package com.qxf.service.impl;
 
+import com.github.pagehelper.Page;
 import com.qxf.dao.RoleDao;
 import com.qxf.dao.UserDao;
 
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @ClassName UserServiceImpl
@@ -40,8 +42,24 @@ public class UserServiceImpl implements UserService,UserDetailsService{
     }
 
     @Override
-    public List<User> getUserList() {
-        return userDao.getUserList();
+    public List<User> getListByPage(Page<User> page, String name) {
+        return userDao.getListByPage(page,name);
+    }
+
+    @Override
+    public Integer deleteUser(String id) {
+        return userDao.deleteUser(id);
+    }
+
+    @Override
+    public Integer addUser(User user) {
+        user.setId(UUID.randomUUID().toString().replace("-",""));
+        return userDao.addUser(user);
+    }
+
+    @Override
+    public Integer updateUser(User user) {
+        return userDao.updateUser(user);
     }
 
     @Override

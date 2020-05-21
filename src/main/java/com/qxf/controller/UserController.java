@@ -1,7 +1,7 @@
 package com.qxf.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.pagehelper.Page;
 import com.qxf.dto.JwtDto;
 import com.qxf.entity.User;
 import com.qxf.security.config.TokenProvider;
@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -50,20 +51,46 @@ public class UserController {
     @Autowired
     private SecurityProperties securityProperties;
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
     @GetMapping("/list")
-    public ResponseEntity<Object> getAllUser(){
-        Map<String,Object> authInfo = new HashMap<String,Object>(2){{
-            put("items",userService.getUserList());
-        }};
-        return ResponseEntity.ok(authInfo);
+    public Object getListByPage(Integer startPage,Integer pageSize,String username){
+        Page<User> page = new Page<>(startPage,pageSize);
+        //查询自己的考试记录
+        List<User> list = userService.getListByPage(page,username);
+        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,page.getTotal());
     }
 
+    @PostMapping("/add")
+    public ResultUtil addUser(@RequestBody User user){
+        String msg = "新增失败！";
+        Integer cnt = userService.addUser(user);
+        if (cnt > 0){
+            msg = "新增成功！";
+        }
+        return new ResultUtil(EnumCode.OK.getValue(),msg);
+    }
+
+    @PostMapping("/update")
+    public ResultUtil updateUser(@RequestBody User user){
+        String msg = "修改失败！";
+        Integer cnt = userService.updateUser(user);
+        if (cnt > 0){
+            msg = "修改成功！";
+        }
+        return new ResultUtil(EnumCode.OK.getValue(),msg);
+    }
+
+    @PostMapping("/delete")
+    public ResultUtil deleteUser(String id){
+        String msg = "删除失败！";
+        Integer cnt = userService.deleteUser(id);
+        if (cnt > 0){
+            msg = "删除成功！";
+        }
+        return new ResultUtil(EnumCode.OK.getValue(),msg);
+    }
     //用户登录
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody User user, HttpServletRequest request,
+    public ResultUtil login(@RequestBody User user, HttpServletRequest request,
                                         HttpServletResponse response) throws JsonProcessingException {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
         //认证
@@ -75,10 +102,10 @@ public class UserController {
         Map<String,Object> authInfo = new HashMap<String,Object>(3){{
             put("token", securityProperties.getTokenStartWith() + jwtToken);
             put("tokenExpiredTime",new Date().getTime() + securityProperties.getTokenValidityInSeconds());
-            put("user",objectMapper.writeValueAsString(authentication.getPrincipal()));
+            put("user",authentication.getPrincipal());
         }};
         logger.info(user.getUsername()+" ：登录成功");
-        return ResponseEntity.ok(authInfo);
+        return new ResultUtil(EnumCode.OK.getValue(),"登录成功！",authInfo);
     }
 
     @GetMapping("/info")
@@ -91,9 +118,9 @@ public class UserController {
         return new ResultUtil(EnumCode.OK.getValue(),"获取用户信息成功",authInfo);
     }
 
-    //刷新token  1589105115025
+    //刷新token
     @PostMapping("/refreshToken")
-    public ResponseEntity<Object> refreshToken(@RequestBody JwtDto jwtDto) throws JsonProcessingException {
+    public ResultUtil refreshToken(@RequestBody JwtDto jwtDto) throws JsonProcessingException {
         Map<String,Object> authInfo = new HashMap<>(3);
         String token = jwtDto.getToken();
         String username = jwtDto.getUsername();
@@ -121,7 +148,7 @@ public class UserController {
 
             authInfo.put("token", securityProperties.getTokenStartWith() + jwtToken);
             authInfo.put("tokenExpiredTime",new Date().getTime() + securityProperties.getTokenValidityInSeconds());
-            authInfo.put("user",objectMapper.writeValueAsString(authentication.getPrincipal()));
+            authInfo.put("user",authentication.getPrincipal());
         }else {
             logger.info("请求刷新的token无效："+token);
             authInfo.put("token","");
@@ -129,7 +156,7 @@ public class UserController {
             authInfo.put("user","");
         }
 
-        return ResponseEntity.ok(authInfo);
+        return new ResultUtil(EnumCode.OK.getValue(),"刷新token成功！",authInfo);
     }
 
 }

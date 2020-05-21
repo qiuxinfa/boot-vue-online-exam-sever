@@ -8,13 +8,28 @@
         <result property="userId" column="user_id" jdbcType="VARCHAR"/>
         <result property="finishTime" column="finish_time" jdbcType="TIMESTAMP"/>
         <result property="costTime" column="cost_time" jdbcType="INTEGER"/>
-        <result property="finalScore" column="final_score" jdbcType="INTEGER"/>
+        <result property="finalScore" column="final_score" jdbcType="DOUBLE"/>
         <result property="resultLevel" column="result_level" jdbcType="INTEGER"/>
         <result property="singleAnswer" column="single_answer" jdbcType="VARCHAR"/>
         <result property="multiAnswer" column="multi_answer" jdbcType="VARCHAR"/>
         <result property="judgeAnswer" column="judge_answer" jdbcType="VARCHAR"/>
         <result property="fillAnswer" column="fill_answer" jdbcType="VARCHAR"/>
     </resultMap>
+
+    <!--分页查询考试记录-->
+    <select id="getListByPage" resultType="com.qxf.dto.ExamRecordDto">
+        SELECT e.id,e.final_score finalScore,e.finish_time finishTime,e.cost_time costTime,
+          (SELECT u.username from user u where u.id = e.user_id) username,
+          (SELECT u.exam_desc from exam u where u.id = e.exam_id) examName,
+          (SELECT u.dict_value from dict u where u.dict_type_code='GRADE_LEVEL' and u.dict_code=e.result_level) resultLevel
+        from exam_record e WHERE 1 = 1
+          <if test="name!=null and name!=''">
+              and EXISTS(SELECT 1 from exam m where m.exam_desc LIKE CONCAT('%',#{name},'%') and m.id = e.exam_id)
+          </if>
+          <if test="userId!=null and userId!=''">
+              and e.user_id = #{userId}
+          </if>
+    </select>
 
     <!--查询单个-->
     <select id="queryById" resultMap="ExamRecordMap">
@@ -75,9 +90,9 @@
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into boot_vue_online_exam.exam_record(exam_id, user_id, finish_time, cost_time, final_score, result_level, single_answer, multi_answer, judge_answer, fill_answer)
-        values (#{examId}, #{userId}, #{finishTime}, #{costTime}, #{finalScore}, #{resultLevel}, #{singleAnswer}, #{multiAnswer}, #{judgeAnswer}, #{fillAnswer})
+    <insert id="insert" parameterType="com.qxf.entity.ExamRecord">
+        insert into boot_vue_online_exam.exam_record(id,exam_id, user_id, finish_time, cost_time, final_score, result_level, single_answer, multi_answer, judge_answer, fill_answer)
+        values (#{id},#{examId}, #{userId}, #{finishTime}, #{costTime}, #{finalScore}, #{resultLevel}, #{singleAnswer}, #{multiAnswer}, #{judgeAnswer}, #{fillAnswer})
     </insert>
 
     <!--通过主键修改数据-->

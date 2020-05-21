@@ -1,12 +1,15 @@
 package com.qxf.service.impl;
 
+import com.github.pagehelper.Page;
 import com.qxf.dao.ExamRecordDao;
+import com.qxf.dto.ExamRecordDto;
 import com.qxf.entity.ExamRecord;
 import com.qxf.service.ExamRecordService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 考试记录表(ExamRecord)表服务实现类
@@ -18,6 +21,11 @@ import java.util.List;
 public class ExamRecordServiceImpl implements ExamRecordService {
     @Resource
     private ExamRecordDao examRecordDao;
+
+    @Override
+    public List<ExamRecordDto> getListByPage(Page<ExamRecordDto> page, String name, String userId) {
+        return examRecordDao.getListByPage(page,name,userId);
+    }
 
     /**
      * 通过ID查询单条数据
@@ -49,9 +57,10 @@ public class ExamRecordServiceImpl implements ExamRecordService {
      * @return 实例对象
      */
     @Override
-    public ExamRecord insert(ExamRecord examRecord) {
-        this.examRecordDao.insert(examRecord);
-        return examRecord;
+    public Integer insert(ExamRecord examRecord) {
+        //设置主键id
+        examRecord.setId(UUID.randomUUID().toString().replace("-",""));
+        return this.examRecordDao.insert(examRecord);
     }
 
     /**

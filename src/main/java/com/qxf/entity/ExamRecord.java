@@ -34,7 +34,7 @@ public class ExamRecord implements Serializable {
     /**
     * 参与考试的实际得分
     */
-    private Integer finalScore;
+    private Double finalScore;
     /**
     * 考试结果的等级
     */
@@ -44,7 +44,7 @@ public class ExamRecord implements Serializable {
     */
     private String singleAnswer;
     /**
-    * 考生多选题答案，题与题之间用*号分隔
+    * 考生多选题答案，题与题之间用*号分隔，同一个题的每2个选项之间按序用#号分隔
     */
     private String multiAnswer;
     /**
@@ -97,11 +97,11 @@ public class ExamRecord implements Serializable {
         this.costTime = costTime;
     }
 
-    public Integer getFinalScore() {
+    public Double getFinalScore() {
         return finalScore;
     }
 
-    public void setFinalScore(Integer finalScore) {
+    public void setFinalScore(Double finalScore) {
         this.finalScore = finalScore;
     }
 

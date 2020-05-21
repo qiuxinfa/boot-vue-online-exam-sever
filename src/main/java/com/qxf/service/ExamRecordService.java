@@ -1,5 +1,7 @@
 package com.qxf.service;
 
+import com.github.pagehelper.Page;
+import com.qxf.dto.ExamRecordDto;
 import com.qxf.entity.ExamRecord;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
  */
 public interface ExamRecordService {
 
+    List<ExamRecordDto> getListByPage(Page<ExamRecordDto> page, String name, String userId);
     /**
      * 通过ID查询单条数据
      *
@@ -35,7 +38,7 @@ public interface ExamRecordService {
      * @param examRecord 实例对象
      * @return 实例对象
      */
-    ExamRecord insert(ExamRecord examRecord);
+    Integer insert(ExamRecord examRecord);
 
     /**
      * 修改数据
