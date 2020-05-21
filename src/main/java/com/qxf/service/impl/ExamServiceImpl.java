@@ -107,8 +107,8 @@ public class ExamServiceImpl implements ExamService {
     }
 
     @Override
-    public List<Exam> getListByPage(Page<Exam> page, String name) {
-        return examDao.getListByPage(page,name);
+    public List<Exam> getListByPage(String name) {
+        return examDao.getListByPage(name);
     }
 
     /**

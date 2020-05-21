@@ -21,7 +21,7 @@ public interface ExamRecordDao {
      * @Param [page, name]
      * @return java.util.List<com.qxf.entity.ExamRecord>
      **/
-    List<ExamRecordDto> getListByPage(Page<ExamRecordDto> page, @Param("name") String name, @Param("userId") String userId);
+    List<ExamRecordDto> getListByPage(@Param("name") String name, @Param("userId") String userId);
 
     /**
      * 通过ID查询单条数据

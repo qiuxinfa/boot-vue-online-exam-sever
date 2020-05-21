@@ -6,11 +6,12 @@
     SELECT * FROM user WHERE username = #{username}
   </select>
 
-  <select id="getListByPage" resultType="user">
-    SELECT * FROM user
-      WHERE 1 = 1
+  <select id="getListByPage" parameterType="string" resultType="com.qxf.entity.User">
+    SELECT u.*,(SELECT GROUP_CONCAT(r.description) from user_role ur,role r where ur.role_id = r.id and ur.user_id = u.id) roleName
+     FROM user u
+    WHERE 1 = 1
       <if test="username!=null and username!=''">
-        AND username LIKE CONCAT('%',#{username},'%')
+        AND u.username LIKE CONCAT('%',#{username},'%')
       </if>
   </select>
 

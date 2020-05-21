@@ -16,7 +16,7 @@ public interface ExamService {
 
     Map<String,List<?>> getExamDetail(Exam exam);
 
-    List<Exam> getListByPage(Page<Exam> page, String name);
+    List<Exam> getListByPage(String name);
 
     /**
      * 通过ID查询单条数据

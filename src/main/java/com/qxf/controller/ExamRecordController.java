@@ -1,6 +1,8 @@
 package com.qxf.controller;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.qxf.dto.ExamRecordDto;
 import com.qxf.entity.ExamRecord;
 import com.qxf.service.ExamRecordService;
@@ -44,10 +46,11 @@ public class ExamRecordController {
     //分页查询考试记录列表
     @GetMapping("/list")
     public Object getListByPage(Integer startPage,Integer pageSize,String name, String userId){
-        Page<ExamRecordDto> page = new Page<>(startPage,pageSize);
+        PageHelper.startPage(startPage,pageSize);
         //查询自己的考试记录
-        List<ExamRecordDto> list = examRecordService.getListByPage(page,name,userId);
-        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,page.getTotal());
+        List<ExamRecordDto> list = examRecordService.getListByPage(name,userId);
+        PageInfo<ExamRecordDto> pageInfo = new PageInfo<>(list);
+        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,pageInfo.getTotal());
     }
     /**
      * 通过主键查询单条数据

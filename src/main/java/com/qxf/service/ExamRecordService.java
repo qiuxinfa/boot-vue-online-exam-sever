@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface ExamRecordService {
 
-    List<ExamRecordDto> getListByPage(Page<ExamRecordDto> page, String name, String userId);
+    List<ExamRecordDto> getListByPage(String name, String userId);
     /**
      * 通过ID查询单条数据
      *

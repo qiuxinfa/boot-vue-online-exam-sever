@@ -13,7 +13,7 @@ import java.util.List;
  * @since 2020-05-17 11:25:40
  */
 public interface ExamDao {
-    List<Exam> getListByPage(Page<Exam> page, @Param("examDesc") String name);
+    List<Exam> getListByPage(@Param("examDesc") String name);
 
     /**
      * 通过ID查询单条数据

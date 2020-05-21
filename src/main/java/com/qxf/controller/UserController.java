@@ -2,6 +2,8 @@ package com.qxf.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.qxf.dto.JwtDto;
 import com.qxf.entity.User;
 import com.qxf.security.config.TokenProvider;
@@ -12,7 +14,6 @@ import com.qxf.util.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -53,10 +54,11 @@ public class UserController {
 
     @GetMapping("/list")
     public Object getListByPage(Integer startPage,Integer pageSize,String username){
-        Page<User> page = new Page<>(startPage,pageSize);
+        PageHelper.startPage(startPage,pageSize);
         //查询自己的考试记录
-        List<User> list = userService.getListByPage(page,username);
-        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,page.getTotal());
+        List<User> list = userService.getListByPage(username);
+        PageInfo<User> pageInfo = new PageInfo<>(list);
+        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,pageInfo.getTotal());
     }
 
     @PostMapping("/add")

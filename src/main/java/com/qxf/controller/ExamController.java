@@ -1,6 +1,8 @@
 package com.qxf.controller;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.qxf.entity.Exam;
 import com.qxf.service.ExamService;
 import com.qxf.util.EnumCode;
@@ -31,9 +33,10 @@ public class ExamController {
     //分页查询考试列表
     @GetMapping("/list")
     public Object getListByPage(Integer startPage,Integer pageSize,String name){
-        Page<Exam> page = new Page<>(startPage,pageSize);
-        List<Exam> list = examService.getListByPage(page,name);
-        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,page.getTotal());
+        PageHelper.startPage(startPage,pageSize);
+        List<Exam> list = examService.getListByPage(name);
+        PageInfo<Exam> pageInfo = new PageInfo<>(list);
+        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,pageInfo.getTotal());
     }
 
     /*

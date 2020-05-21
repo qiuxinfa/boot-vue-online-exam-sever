@@ -1,6 +1,5 @@
 package com.qxf.service.impl;
 
-import com.github.pagehelper.Page;
 import com.qxf.dao.RoleDao;
 import com.qxf.dao.UserDao;
 
@@ -42,8 +41,8 @@ public class UserServiceImpl implements UserService,UserDetailsService{
     }
 
     @Override
-    public List<User> getListByPage(Page<User> page, String name) {
-        return userDao.getListByPage(page,name);
+    public List<User> getListByPage(String name) {
+        return userDao.getListByPage(name);
     }
 
     @Override

@@ -23,8 +23,8 @@ public class ExamRecordServiceImpl implements ExamRecordService {
     private ExamRecordDao examRecordDao;
 
     @Override
-    public List<ExamRecordDto> getListByPage(Page<ExamRecordDto> page, String name, String userId) {
-        return examRecordDao.getListByPage(page,name,userId);
+    public List<ExamRecordDto> getListByPage(String name, String userId) {
+        return examRecordDao.getListByPage(name,userId);
     }
 
     /**

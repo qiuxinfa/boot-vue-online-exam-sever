@@ -47,6 +47,16 @@ public class User implements Serializable,UserDetails {
 
     private List<Role> roles;
 
+    private String roleName;
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
     public List<Role> getRoles() {
         return roles;
     }
