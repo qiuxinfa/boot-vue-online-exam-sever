@@ -49,7 +49,7 @@
   </insert>
 
   <delete id="deleteUser" parameterType="string">
-    UPDATE user set enable=0 WHERE id = #{id}
+    DELETE FROM user WHERE id = #{id}
   </delete>
 
 </mapper>
