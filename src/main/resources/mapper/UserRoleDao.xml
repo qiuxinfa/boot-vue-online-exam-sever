@@ -43,9 +43,9 @@
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into boot_vue_online_exam.user_role(user_id, role_id)
-        values (#{userId}, #{roleId})
+    <insert id="insert">
+        insert into boot_vue_online_exam.user_role(id,user_id, role_id)
+        values (#{id},#{userId}, #{roleId})
     </insert>
 
     <!--通过主键修改数据-->

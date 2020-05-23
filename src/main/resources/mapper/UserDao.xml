@@ -13,6 +13,7 @@
       <if test="username!=null and username!=''">
         AND u.username LIKE CONCAT('%',#{username},'%')
       </if>
+    ORDER BY u.create_time desc
   </select>
 
   <update id="updateUser" parameterType="com.qxf.entity.User">

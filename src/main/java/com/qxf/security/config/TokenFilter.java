@@ -41,21 +41,16 @@ public class TokenFilter extends GenericFilterBean {
         String requestRri = httpServletRequest.getRequestURI();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         // 如果上下文没有用户信息，并且token有效（排除了登录，因为登录是没有token的），
-        // 并排除刷新token，因为过期token在validateToken会抛出过期异常
-        if ("/error".equals(requestRri) || "/user/refreshToken".equals(requestRri)){
-
-        }else {
-            if (StringUtils.hasText(token) && tokenProvider.validateToken(token)) {
-                //从token中获取用户信息
-                if (authentication == null){
-                    authentication = tokenProvider.getAuthentication(token);
-                    SecurityContextHolder.getContext().setAuthentication(authentication);
-                    System.out.println("set Authentication to security context for '{"+authentication.getName()+"}'," +
-                            " uri: {"+requestRri+"}");
-                }
-            } else {
-                System.out.println("no valid JWT token found, uri: {"+requestRri+"}");
+        if (StringUtils.hasText(token) && tokenProvider.validateToken(token)) {
+            //从token中获取用户信息
+            if (authentication == null){
+                authentication = tokenProvider.getAuthentication(token);
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+                System.out.println("set Authentication to security context for '{"+authentication.getName()+"}'," +
+                        " uri: {"+requestRri+"}");
             }
+        } else {
+            System.out.println("no valid JWT token found, uri: {"+requestRri+"}");
         }
 
         filterChain.doFilter(servletRequest, servletResponse);

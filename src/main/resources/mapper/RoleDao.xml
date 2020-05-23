@@ -6,7 +6,14 @@
     SELECT r.id,r.name,r.description
        FROM role r, user_role ur
       WHERE r.id = ur.role_id
-       AND ur.user_id = #{userId}
+       <if test="userId!=null and userId!=''">
+           AND ur.user_id = #{userId}
+       </if>
   </select>
+
+    <select id="getRoleList" resultType="role">
+        SELECT r.id,r.description name
+        FROM role r
+    </select>
 
 </mapper>

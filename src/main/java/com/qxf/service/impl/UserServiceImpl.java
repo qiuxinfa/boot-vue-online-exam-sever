@@ -3,15 +3,19 @@ package com.qxf.service.impl;
 import com.qxf.dao.RoleDao;
 import com.qxf.dao.UserDao;
 
+import com.qxf.dao.UserRoleDao;
 import com.qxf.entity.Role;
 import com.qxf.entity.User;
+import com.qxf.entity.UserRole;
 import com.qxf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,6 +32,12 @@ public class UserServiceImpl implements UserService,UserDetailsService{
 
     @Autowired
     private RoleDao roleDao;
+
+    @Autowired
+    private UserRoleDao userRoleDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -53,6 +63,15 @@ public class UserServiceImpl implements UserService,UserDetailsService{
     @Override
     public Integer addUser(User user) {
         user.setId(UUID.randomUUID().toString().replace("-",""));
+        //密码加密
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setCreateTime(new Date());
+        //设置用户角色关联表
+        UserRole userRole = new UserRole();
+        userRole.setId(UUID.randomUUID().toString().replace("-",""));
+        userRole.setUserId(user.getId());
+        userRole.setRoleId(user.getRoleName());
+        userRoleDao.insert(userRole);
         return userDao.addUser(user);
     }
 

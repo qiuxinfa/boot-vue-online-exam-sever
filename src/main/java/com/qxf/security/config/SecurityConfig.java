@@ -69,7 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // httpMethod options
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // 账号相关
-                .antMatchers("/user/login","/user/register","/user/refreshToken").permitAll()
+                .antMatchers("/user/login","/user/register","/user/refreshToken","/api/file/**").permitAll()
                 // 文件上传
                 //.antMatchers("/file/upload/**").permitAll()
                 // 文件访问
