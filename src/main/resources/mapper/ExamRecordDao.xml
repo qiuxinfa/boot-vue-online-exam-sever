@@ -29,6 +29,7 @@
           <if test="userId!=null and userId!=''">
               and e.user_id = #{userId}
           </if>
+        ORDER BY e.finish_time DESC
     </select>
 
     <!--查询单个-->
