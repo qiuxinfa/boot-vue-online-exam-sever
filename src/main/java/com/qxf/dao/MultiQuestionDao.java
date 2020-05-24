@@ -1,5 +1,6 @@
 package com.qxf.dao;
 
+import com.qxf.dto.QuestionDto;
 import com.qxf.entity.MultiQuestion;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @since 2020-05-17 11:25:40
  */
 public interface MultiQuestionDao {
-
+    List<QuestionDto> getListByPage(@Param("content") String content);
     /**
      * 通过ID查询单条数据
      *

@@ -18,7 +18,18 @@
         <result property="questionLevel" column="question_level" jdbcType="INTEGER"/>
         <result property="questionType" column="question_type" jdbcType="INTEGER"/>
     </resultMap>
-
+    <!-- 分页查询 -->
+    <select id="getListByPage" parameterType="string" resultType="com.qxf.dto.QuestionDto">
+        SELECT t.id,t.question_content content,t.create_time,t.update_time,
+        '多选题' typeStr, '3' type,
+        (SELECT d.dict_value from dict d where d.dict_type_code='QUESTION_LEVEL' and d.dict_code=t.question_level) level
+        from boot_vue_online_exam.multi_question t
+        WHERE 1 = 1
+        <if test="content!=null and content!=''">
+            AND t.question_content LIKE CONCAT('%',#{content},'%')
+        </if>
+        ORDER BY t.create_time DESC
+    </select>
     <!--查询单个-->
     <select id="queryById" resultMap="MultiQuestionMap">
         select
@@ -87,9 +98,9 @@
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into boot_vue_online_exam.multi_question(create_id, create_time, update_id, update_time, question_content, choice_A, choice_B, choice_C, choice_D, question_answer, question_explain, question_level, question_type)
-        values (#{createId}, #{createTime}, #{updateId}, #{updateTime}, #{questionContent}, #{choiceA}, #{choiceB}, #{choiceC}, #{choiceD}, #{questionAnswer}, #{questionExplain}, #{questionLevel}, #{questionType})
+    <insert id="insert">
+        insert into boot_vue_online_exam.multi_question(id,create_id, create_time, update_id, update_time, question_content, choice_A, choice_B, choice_C, choice_D, question_answer, question_explain, question_level, question_type)
+        values (#{id},#{createId}, #{createTime}, #{updateId}, #{updateTime}, #{questionContent}, #{choiceA}, #{choiceB}, #{choiceC}, #{choiceD}, #{questionAnswer}, #{questionExplain}, #{questionLevel}, #{questionType})
     </insert>
 
     <!--通过主键修改数据-->

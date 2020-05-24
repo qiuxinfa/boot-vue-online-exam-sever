@@ -1,6 +1,7 @@
 package com.qxf.service.impl;
 
 import com.qxf.dao.MultiQuestionDao;
+import com.qxf.dto.QuestionDto;
 import com.qxf.entity.MultiQuestion;
 import com.qxf.service.MultiQuestionService;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,11 @@ import java.util.List;
 public class MultiQuestionServiceImpl implements MultiQuestionService {
     @Resource
     private MultiQuestionDao multiQuestionDao;
+
+    @Override
+    public List<QuestionDto> getListByPage(String content) {
+        return multiQuestionDao.getListByPage(content);
+    }
 
     /**
      * 通过ID查询单条数据

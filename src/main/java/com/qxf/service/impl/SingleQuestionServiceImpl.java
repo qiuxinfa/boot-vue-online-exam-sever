@@ -1,6 +1,7 @@
 package com.qxf.service.impl;
 
 import com.qxf.dao.SingleQuestionDao;
+import com.qxf.dto.QuestionDto;
 import com.qxf.entity.SingleQuestion;
 import com.qxf.service.SingleQuestionService;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,11 @@ import java.util.List;
 public class SingleQuestionServiceImpl implements SingleQuestionService {
     @Resource
     private SingleQuestionDao singleQuestionDao;
+
+    @Override
+    public List<QuestionDto> getListByPage(String content) {
+        return singleQuestionDao.getListByPage(content);
+    }
 
     /**
      * 通过ID查询单条数据

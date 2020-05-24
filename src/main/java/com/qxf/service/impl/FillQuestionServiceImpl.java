@@ -1,6 +1,7 @@
 package com.qxf.service.impl;
 
 import com.qxf.dao.FillQuestionDao;
+import com.qxf.dto.QuestionDto;
 import com.qxf.entity.FillQuestion;
 import com.qxf.service.FillQuestionService;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,11 @@ import java.util.List;
 public class FillQuestionServiceImpl implements FillQuestionService {
     @Resource
     private FillQuestionDao fillQuestionDao;
+
+    @Override
+    public List<QuestionDto> getListByPage(String content) {
+        return fillQuestionDao.getListByPage(content);
+    }
 
     /**
      * 通过ID查询单条数据

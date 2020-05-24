@@ -1,6 +1,7 @@
 package com.qxf.service.impl;
 
 import com.qxf.dao.JudgeQuestionDao;
+import com.qxf.dto.QuestionDto;
 import com.qxf.entity.JudgeQuestion;
 import com.qxf.service.JudgeQuestionService;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,11 @@ import java.util.List;
 public class JudgeQuestionServiceImpl implements JudgeQuestionService {
     @Resource
     private JudgeQuestionDao judgeQuestionDao;
+
+    @Override
+    public List<QuestionDto> getListByPage(String content) {
+        return judgeQuestionDao.getListByPage(content);
+    }
 
     /**
      * 通过ID查询单条数据
