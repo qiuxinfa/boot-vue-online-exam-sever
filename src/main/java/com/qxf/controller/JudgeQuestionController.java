@@ -7,12 +7,12 @@ import com.qxf.entity.JudgeQuestion;
 import com.qxf.service.JudgeQuestionService;
 import com.qxf.util.EnumCode;
 import com.qxf.util.ResultUtil;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 判断题(JudgeQuestion)表控制层
@@ -37,6 +37,20 @@ public class JudgeQuestionController {
         PageInfo<QuestionDto> pageInfo = new PageInfo<>(list);
         return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,pageInfo.getTotal());
     }
+
+    @PostMapping("/add")
+    public ResultUtil add(@RequestBody JudgeQuestion judgeQuestion){
+        judgeQuestion.setId(UUID.randomUUID().toString().replace("-",""));
+        judgeQuestion.setCreateTime(new Date());
+        JudgeQuestion insert = judgeQuestionService.insert(judgeQuestion);
+        if (insert != null){
+            return new ResultUtil(EnumCode.OK.getValue(),"请求成功");
+        }else {
+            return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"请求失败");
+        }
+
+    }
+
     /**
      * 通过主键查询单条数据
      *

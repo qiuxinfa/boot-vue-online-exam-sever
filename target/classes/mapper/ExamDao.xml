@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qxf.dao.ExamDao">
+
+    <resultMap type="com.qxf.entity.Exam" id="ExamMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="examDesc" column="exam_desc" jdbcType="VARCHAR"/>
+        <result property="startDate" column="start_date" jdbcType="OTHER"/>
+        <result property="endDate" column="end_date" jdbcType="OTHER"/>
+        <result property="totalTime" column="total_time" jdbcType="INTEGER"/>
+        <result property="major" column="major" jdbcType="VARCHAR"/>
+        <result property="institute" column="institute" jdbcType="VARCHAR"/>
+        <result property="examType" column="exam_type" jdbcType="INTEGER"/>
+        <result property="singleScore" column="single_score" jdbcType="INTEGER"/>
+        <result property="multiScore" column="multi_score" jdbcType="INTEGER"/>
+        <result property="judgeScore" column="judge_score" jdbcType="INTEGER"/>
+        <result property="fillScore" column="fill_score" jdbcType="INTEGER"/>
+        <result property="totalScore" column="total_score" jdbcType="INTEGER"/>
+        <result property="singleIds" column="single_ids" jdbcType="VARCHAR"/>
+        <result property="multiIds" column="multi_ids" jdbcType="VARCHAR"/>
+        <result property="judgeIds" column="judge_ids" jdbcType="VARCHAR"/>
+        <result property="fillIds" column="fill_ids" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <!--分页查询-->
+    <select id="getListByPage" parameterType="string" resultMap="ExamMap">
+        select
+        id, exam_desc, start_date, end_date, total_time, major, institute, exam_type, single_score, multi_score, judge_score, fill_score, total_score, single_ids, multi_ids, judge_ids, fill_ids
+        from boot_vue_online_exam.exam
+        where  1 = 1
+        <if test=" examDesc != null and examDesc != '' ">
+            AND e.exam_desc LIKE CONCAT('%',#{examDesc},'%')
+        </if>
+    </select>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ExamMap">
+        select
+          id, exam_desc, start_date, end_date, total_time, major, institute, exam_type, single_score, multi_score, judge_score, fill_score, total_score, single_ids, multi_ids, judge_ids, fill_ids
+        from boot_vue_online_exam.exam
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ExamMap">
+        select
+          id, exam_desc, start_date, end_date, total_time, major, institute, exam_type, single_score, multi_score, judge_score, fill_score, total_score, single_ids, multi_ids, judge_ids, fill_ids
+        from boot_vue_online_exam.exam
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ExamMap">
+        select
+          id, exam_desc, start_date, end_date, total_time, major, institute, exam_type, single_score, multi_score, judge_score, fill_score, total_score, single_ids, multi_ids, judge_ids, fill_ids
+        from boot_vue_online_exam.exam
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="examDesc != null and examDesc != ''">
+                and exam_desc = #{examDesc}
+            </if>
+            <if test="startDate != null">
+                and start_date = #{startDate}
+            </if>
+            <if test="endDate != null">
+                and end_date = #{endDate}
+            </if>
+            <if test="totalTime != null">
+                and total_time = #{totalTime}
+            </if>
+            <if test="major != null and major != ''">
+                and major = #{major}
+            </if>
+            <if test="institute != null and institute != ''">
+                and institute = #{institute}
+            </if>
+            <if test="examType != null">
+                and exam_type = #{examType}
+            </if>
+            <if test="singleScore != null">
+                and single_score = #{singleScore}
+            </if>
+            <if test="multiScore != null">
+                and multi_score = #{multiScore}
+            </if>
+            <if test="judgeScore != null">
+                and judge_score = #{judgeScore}
+            </if>
+            <if test="fillScore != null">
+                and fill_score = #{fillScore}
+            </if>
+            <if test="totalScore != null">
+                and total_score = #{totalScore}
+            </if>
+            <if test="singleIds != null and singleIds != ''">
+                and single_ids = #{singleIds}
+            </if>
+            <if test="multiIds != null and multiIds != ''">
+                and multi_ids = #{multiIds}
+            </if>
+            <if test="judgeIds != null and judgeIds != ''">
+                and judge_ids = #{judgeIds}
+            </if>
+            <if test="fillIds != null and fillIds != ''">
+                and fill_ids = #{fillIds}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into boot_vue_online_exam.exam(exam_desc, start_date, end_date, total_time, major, institute, exam_type, single_score, multi_score, judge_score, fill_score, total_score, single_ids, multi_ids, judge_ids, fill_ids)
+        values (#{examDesc}, #{startDate}, #{endDate}, #{totalTime}, #{major}, #{institute}, #{examType}, #{singleScore}, #{multiScore}, #{judgeScore}, #{fillScore}, #{totalScore}, #{singleIds}, #{multiIds}, #{judgeIds}, #{fillIds})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update boot_vue_online_exam.exam
+        <set>
+            <if test="examDesc != null and examDesc != ''">
+                exam_desc = #{examDesc},
+            </if>
+            <if test="startDate != null">
+                start_date = #{startDate},
+            </if>
+            <if test="endDate != null">
+                end_date = #{endDate},
+            </if>
+            <if test="totalTime != null">
+                total_time = #{totalTime},
+            </if>
+            <if test="major != null and major != ''">
+                major = #{major},
+            </if>
+            <if test="institute != null and institute != ''">
+                institute = #{institute},
+            </if>
+            <if test="examType != null">
+                exam_type = #{examType},
+            </if>
+            <if test="singleScore != null">
+                single_score = #{singleScore},
+            </if>
+            <if test="multiScore != null">
+                multi_score = #{multiScore},
+            </if>
+            <if test="judgeScore != null">
+                judge_score = #{judgeScore},
+            </if>
+            <if test="fillScore != null">
+                fill_score = #{fillScore},
+            </if>
+            <if test="totalScore != null">
+                total_score = #{totalScore},
+            </if>
+            <if test="singleIds != null and singleIds != ''">
+                single_ids = #{singleIds},
+            </if>
+            <if test="multiIds != null and multiIds != ''">
+                multi_ids = #{multiIds},
+            </if>
+            <if test="judgeIds != null and judgeIds != ''">
+                judge_ids = #{judgeIds},
+            </if>
+            <if test="fillIds != null and fillIds != ''">
+                fill_ids = #{fillIds},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from boot_vue_online_exam.exam where id = #{id}
+    </delete>
+
+</mapper>

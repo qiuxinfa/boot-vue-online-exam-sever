@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qxf.dao.ExamRecordDao">
+
+    <resultMap type="com.qxf.entity.ExamRecord" id="ExamRecordMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="examId" column="exam_id" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="finishTime" column="finish_time" jdbcType="TIMESTAMP"/>
+        <result property="costTime" column="cost_time" jdbcType="INTEGER"/>
+        <result property="finalScore" column="final_score" jdbcType="DOUBLE"/>
+        <result property="resultLevel" column="result_level" jdbcType="INTEGER"/>
+        <result property="singleAnswer" column="single_answer" jdbcType="VARCHAR"/>
+        <result property="multiAnswer" column="multi_answer" jdbcType="VARCHAR"/>
+        <result property="judgeAnswer" column="judge_answer" jdbcType="VARCHAR"/>
+        <result property="fillAnswer" column="fill_answer" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--分页查询考试记录-->
+    <select id="getListByPage" resultType="com.qxf.dto.ExamRecordDto">
+        SELECT e.id,e.final_score finalScore,e.finish_time finishTime,e.cost_time costTime,
+          (SELECT u.username from user u where u.id = e.user_id) username,
+          (SELECT u.exam_desc from exam u where u.id = e.exam_id) examName,
+          (SELECT u.dict_value from dict u where u.dict_type_code='GRADE_LEVEL' and u.dict_code=e.result_level) resultLevel
+        from exam_record e WHERE 1 = 1
+          <if test="name!=null and name!=''">
+              and EXISTS(SELECT 1 from exam m where m.exam_desc LIKE CONCAT('%',#{name},'%') and m.id = e.exam_id)
+          </if>
+          <if test="userId!=null and userId!=''">
+              and e.user_id = #{userId}
+          </if>
+        ORDER BY e.finish_time DESC
+    </select>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ExamRecordMap">
+        select
+          id, exam_id, user_id, finish_time, cost_time, final_score, result_level, single_answer, multi_answer, judge_answer, fill_answer
+        from boot_vue_online_exam.exam_record
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ExamRecordMap">
+        select
+          id, exam_id, user_id, finish_time, cost_time, final_score, result_level, single_answer, multi_answer, judge_answer, fill_answer
+        from boot_vue_online_exam.exam_record
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ExamRecordMap">
+        select
+          id, exam_id, user_id, finish_time, cost_time, final_score, result_level, single_answer, multi_answer, judge_answer, fill_answer
+        from boot_vue_online_exam.exam_record
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="examId != null and examId != ''">
+                and exam_id = #{examId}
+            </if>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+            <if test="finishTime != null">
+                and finish_time = #{finishTime}
+            </if>
+            <if test="costTime != null">
+                and cost_time = #{costTime}
+            </if>
+            <if test="finalScore != null">
+                and final_score = #{finalScore}
+            </if>
+            <if test="resultLevel != null">
+                and result_level = #{resultLevel}
+            </if>
+            <if test="singleAnswer != null and singleAnswer != ''">
+                and single_answer = #{singleAnswer}
+            </if>
+            <if test="multiAnswer != null and multiAnswer != ''">
+                and multi_answer = #{multiAnswer}
+            </if>
+            <if test="judgeAnswer != null and judgeAnswer != ''">
+                and judge_answer = #{judgeAnswer}
+            </if>
+            <if test="fillAnswer != null and fillAnswer != ''">
+                and fill_answer = #{fillAnswer}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" parameterType="com.qxf.entity.ExamRecord">
+        insert into boot_vue_online_exam.exam_record(id,exam_id, user_id, finish_time, cost_time, final_score, result_level, single_answer, multi_answer, judge_answer, fill_answer)
+        values (#{id},#{examId}, #{userId}, #{finishTime}, #{costTime}, #{finalScore}, #{resultLevel}, #{singleAnswer}, #{multiAnswer}, #{judgeAnswer}, #{fillAnswer})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update boot_vue_online_exam.exam_record
+        <set>
+            <if test="examId != null and examId != ''">
+                exam_id = #{examId},
+            </if>
+            <if test="userId != null and userId != ''">
+                user_id = #{userId},
+            </if>
+            <if test="finishTime != null">
+                finish_time = #{finishTime},
+            </if>
+            <if test="costTime != null">
+                cost_time = #{costTime},
+            </if>
+            <if test="finalScore != null">
+                final_score = #{finalScore},
+            </if>
+            <if test="resultLevel != null">
+                result_level = #{resultLevel},
+            </if>
+            <if test="singleAnswer != null and singleAnswer != ''">
+                single_answer = #{singleAnswer},
+            </if>
+            <if test="multiAnswer != null and multiAnswer != ''">
+                multi_answer = #{multiAnswer},
+            </if>
+            <if test="judgeAnswer != null and judgeAnswer != ''">
+                judge_answer = #{judgeAnswer},
+            </if>
+            <if test="fillAnswer != null and fillAnswer != ''">
+                fill_answer = #{fillAnswer},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from boot_vue_online_exam.exam_record where id = #{id}
+    </delete>
+
+</mapper>

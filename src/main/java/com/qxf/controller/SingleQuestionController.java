@@ -7,12 +7,12 @@ import com.qxf.entity.SingleQuestion;
 import com.qxf.service.SingleQuestionService;
 import com.qxf.util.EnumCode;
 import com.qxf.util.ResultUtil;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 单选题(SingleQuestion)表控制层
@@ -36,6 +36,20 @@ public class SingleQuestionController {
         PageInfo<QuestionDto> pageInfo = new PageInfo<>(list);
         return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,pageInfo.getTotal());
     }
+
+    @PostMapping("/add")
+    public ResultUtil add(@RequestBody SingleQuestion singleQuestion){
+        singleQuestion.setId(UUID.randomUUID().toString().replace("-",""));
+        singleQuestion.setCreateTime(new Date());
+        SingleQuestion insert = singleQuestionService.insert(singleQuestion);
+        if (insert != null){
+            return new ResultUtil(EnumCode.OK.getValue(),"请求成功");
+        }else {
+            return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"请求失败");
+        }
+
+    }
+
     /**
      * 通过主键查询单条数据
      *

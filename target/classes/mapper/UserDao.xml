@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qxf.dao.UserDao">
+
+  <select id="getUserByUsername" parameterType="string" resultType="user">
+    SELECT * FROM user WHERE username = #{username}
+  </select>
+
+  <select id="getListByPage" parameterType="string" resultType="com.qxf.entity.User">
+    SELECT u.*,(SELECT GROUP_CONCAT(r.description) from user_role ur,role r where ur.role_id = r.id and ur.user_id = u.id) roleName
+     FROM user u
+    WHERE 1 = 1
+      <if test="username!=null and username!=''">
+        AND u.username LIKE CONCAT('%',#{username},'%')
+      </if>
+    ORDER BY u.create_time desc
+  </select>
+
+  <update id="updateUser" parameterType="com.qxf.entity.User">
+    UPDATE user
+    <set>
+      <if test="username != null and username != ''">
+        username = #{username},
+      </if>
+      <if test="password != null and password != ''">
+        password = #{password},
+      </if>
+      <if test="email != null and email != ''">
+        email = #{email},
+      </if>
+      <if test="photoUrl != null and photoUrl != ''">
+        photo_url = #{photoUrl},
+      </if>
+      <if test="enable != null">
+        enable = #{enable},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
+  <insert id="addUser" parameterType="com.qxf.entity.User">
+    INSERT INTO user(id,username,password,email,photo_url,enable,create_time,last_login_time)
+    VALUES (#{id},#{username},#{password},#{email},#{photoUrl},#{enable},#{createTime},#{lastLoginTime})
+  </insert>
+
+  <delete id="deleteUser" parameterType="string">
+    DELETE FROM user WHERE id = #{id}
+  </delete>
+
+</mapper>

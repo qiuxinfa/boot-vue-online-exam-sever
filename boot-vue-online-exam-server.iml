@@ -62,6 +62,10 @@
     <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.5.1" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper-spring-boot-starter:1.2.12" level="project" />
+    <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper-spring-boot-autoconfigure:1.2.12" level="project" />
+    <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:5.1.10" level="project" />
+    <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:2.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:2.1.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.1.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:5.1.6.RELEASE" level="project" />
@@ -96,5 +100,6 @@
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.2.3" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
   </component>
 </module>
