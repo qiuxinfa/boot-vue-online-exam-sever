@@ -1,6 +1,7 @@
 package com.qxf.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 考试安排(Exam)实体类
@@ -14,6 +15,15 @@ public class Exam implements Serializable {
     * id
     */
     private String id;
+
+    /*
+     *试卷名称
+     **/
+    private String name;
+
+    private Date createTime;
+
+    private Date updateTime;
     /**
     * 考试介绍
     */
@@ -79,6 +89,42 @@ public class Exam implements Serializable {
     */
     private String fillIds;
 
+    /**
+     * 是否发布：0未发布，1已发布（发布的试卷，才可以考试）
+     */
+    private Integer isPublish;
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getIsPublish() {
+        return isPublish;
+    }
+
+    public void setIsPublish(Integer isPublish) {
+        this.isPublish = isPublish;
+    }
 
     public String getId() {
         return id;

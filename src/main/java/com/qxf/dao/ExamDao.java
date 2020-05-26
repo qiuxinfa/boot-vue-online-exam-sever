@@ -13,7 +13,14 @@ import java.util.List;
  * @since 2020-05-17 11:25:40
  */
 public interface ExamDao {
-    List<Exam> getListByPage(@Param("examDesc") String name);
+    /*
+     * @Author qiuxinfa
+     * @Description 分页查询考试列表或试卷列表
+     * @Date  2020/5/26 23:24
+     * @Param [name]
+     * @return java.util.List<com.qxf.entity.Exam>
+     **/
+    List<Exam> getListByPage(@Param("name") String name,@Param("isPublish") Integer isPublish);
 
     /**
      * 通过ID查询单条数据
