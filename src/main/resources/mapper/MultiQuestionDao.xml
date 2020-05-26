@@ -20,9 +20,10 @@
     </resultMap>
     <!-- 分页查询 -->
     <select id="getListByPage" parameterType="string" resultType="com.qxf.dto.QuestionDto">
-        SELECT t.id,t.question_content content,t.create_time,t.update_time,
-        '多选题' typeStr, '3' type,
-        (SELECT d.dict_value from dict d where d.dict_type_code='QUESTION_LEVEL' and d.dict_code=t.question_level) level
+        SELECT t.id,t.question_content,t.question_answer,t.question_explain, t.create_time,t.update_time,
+        '多选题' typeStr,t.question_level,t.choice_A choiceA,t.choice_B choiceB,
+        t.choice_C choiceC,t.choice_D choiceD,
+        (SELECT d.dict_value from dict d where d.dict_type_code='QUESTION_LEVEL' and d.dict_code=t.question_level) questionLevelStr
         from boot_vue_online_exam.multi_question t
         WHERE 1 = 1
         <if test="content!=null and content!=''">
