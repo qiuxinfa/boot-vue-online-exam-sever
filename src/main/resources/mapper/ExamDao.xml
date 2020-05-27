@@ -14,11 +14,11 @@
         <result property="major" column="major" jdbcType="VARCHAR"/>
         <result property="institute" column="institute" jdbcType="VARCHAR"/>
         <result property="examType" column="exam_type" jdbcType="INTEGER"/>
-        <result property="singleScore" column="single_score" jdbcType="INTEGER"/>
-        <result property="multiScore" column="multi_score" jdbcType="INTEGER"/>
-        <result property="judgeScore" column="judge_score" jdbcType="INTEGER"/>
-        <result property="fillScore" column="fill_score" jdbcType="INTEGER"/>
-        <result property="totalScore" column="total_score" jdbcType="INTEGER"/>
+        <result property="singleScore" column="single_score" jdbcType="DOUBLE"/>
+        <result property="multiScore" column="multi_score" jdbcType="DOUBLE"/>
+        <result property="judgeScore" column="judge_score" jdbcType="DOUBLE"/>
+        <result property="fillScore" column="fill_score" jdbcType="DOUBLE"/>
+        <result property="totalScore" column="total_score" jdbcType="DOUBLE"/>
         <result property="singleIds" column="single_ids" jdbcType="VARCHAR"/>
         <result property="multiIds" column="multi_ids" jdbcType="VARCHAR"/>
         <result property="judgeIds" column="judge_ids" jdbcType="VARCHAR"/>
@@ -39,6 +39,7 @@
         <if test=" name != null and name != '' ">
             AND name LIKE CONCAT('%',#{name},'%')
         </if>
+        ORDER BY create_time DESC, update_time DESC
     </select>
 
     <!--查询单个-->
@@ -118,9 +119,9 @@
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into boot_vue_online_exam.exam(exam_desc, start_date, end_date, total_time, major, institute, exam_type, single_score, multi_score, judge_score, fill_score, total_score, single_ids, multi_ids, judge_ids, fill_ids)
-        values (#{examDesc}, #{startDate}, #{endDate}, #{totalTime}, #{major}, #{institute}, #{examType}, #{singleScore}, #{multiScore}, #{judgeScore}, #{fillScore}, #{totalScore}, #{singleIds}, #{multiIds}, #{judgeIds}, #{fillIds})
+    <insert id="insert">
+        insert into boot_vue_online_exam.exam(id,name,create_time,update_time,exam_desc, start_date, end_date, total_time, major, institute, exam_type, single_score, multi_score, judge_score, fill_score, total_score, single_ids, multi_ids, judge_ids, fill_ids,is_publish)
+        values (#{id},#{name},#{createTime},#{updateTime},#{examDesc}, #{startDate}, #{endDate}, #{totalTime}, #{major}, #{institute}, #{examType}, #{singleScore}, #{multiScore}, #{judgeScore}, #{fillScore}, #{totalScore}, #{singleIds}, #{multiIds}, #{judgeIds}, #{fillIds},#{isPublish})
     </insert>
 
     <!--通过主键修改数据-->

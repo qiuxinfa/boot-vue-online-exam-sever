@@ -2,13 +2,12 @@ package com.qxf.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.qxf.dto.PaperDto;
 import com.qxf.entity.Exam;
 import com.qxf.service.ExamService;
 import com.qxf.util.EnumCode;
 import com.qxf.util.ResultUtil;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -33,4 +32,11 @@ public class PaperController {
         PageInfo<Exam> pageInfo = new PageInfo<>(list);
         return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,pageInfo.getTotal());
     }
+
+    //随机组卷
+    @PostMapping("/add")
+    public ResultUtil addPaperByRandom(@RequestBody PaperDto paperDto){
+        return examService.addPaperByRandom(paperDto);
+    }
+
 }

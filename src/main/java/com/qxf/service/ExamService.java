@@ -1,7 +1,9 @@
 package com.qxf.service;
 
 import com.github.pagehelper.Page;
+import com.qxf.dto.PaperDto;
 import com.qxf.entity.Exam;
+import com.qxf.util.ResultUtil;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +15,8 @@ import java.util.Map;
  * @since 2020-05-17 11:25:40
  */
 public interface ExamService {
+
+    ResultUtil addPaperByRandom(PaperDto paperDto);
 
     Map<String,List<?>> getExamDetail(Exam exam);
 
@@ -26,14 +30,6 @@ public interface ExamService {
      */
     Exam queryById(String id);
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
-    List<Exam> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
@@ -41,7 +37,7 @@ public interface ExamService {
      * @param exam 实例对象
      * @return 实例对象
      */
-    Exam insert(Exam exam);
+    Integer insert(Exam exam);
 
     /**
      * 修改数据
@@ -49,7 +45,7 @@ public interface ExamService {
      * @param exam 实例对象
      * @return 实例对象
      */
-    Exam update(Exam exam);
+    Integer update(Exam exam);
 
     /**
      * 通过主键删除数据
@@ -57,6 +53,6 @@ public interface ExamService {
      * @param id 主键
      * @return 是否成功
      */
-    boolean deleteById(String id);
+    Integer deleteById(String id);
 
 }

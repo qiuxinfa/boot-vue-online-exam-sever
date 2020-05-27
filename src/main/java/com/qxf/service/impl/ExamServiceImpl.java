@@ -2,16 +2,17 @@ package com.qxf.service.impl;
 
 import com.github.pagehelper.Page;
 import com.qxf.dao.*;
+import com.qxf.dto.PaperDto;
+import com.qxf.dto.QuestionDto;
 import com.qxf.entity.*;
 import com.qxf.service.ExamService;
+import com.qxf.util.EnumCode;
+import com.qxf.util.ResultUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 考试安排(Exam)表服务实现类
@@ -35,6 +36,74 @@ public class ExamServiceImpl implements ExamService {
 
     @Resource
     private FillQuestionDao fillQuestionDao;
+
+    @Override
+    public ResultUtil addPaperByRandom(PaperDto paperDto) {
+        // 解析随机组卷的内容
+        Integer fillNumber = paperDto.getFillNumber();
+        Integer judgeNumber = paperDto.getJudgeNumber();
+        Integer singleNumber = paperDto.getSingleNumber();
+        Integer multiNumber = paperDto.getMultiNumber();
+        //判断各种题型是否超出范围
+        List<QuestionDto> fills = fillQuestionDao.getListByPage(null);
+        if (fills != null && fills.size() < fillNumber){
+            return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"单选题数量最多为："+fills.size());
+        }
+        List<QuestionDto> judges = judgeQuestionDao.getListByPage(null);
+        if (judges != null && judges.size() < judgeNumber){
+            return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"判断题数量最多为："+judges.size());
+        }
+        List<QuestionDto> singles = singleQuestionDao.getListByPage(null);
+        if (singles != null && singles.size() < singleNumber){
+            return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"单选题数量最多为："+singles.size());
+        }
+        List<QuestionDto> multis = multiQuestionDao.getListByPage(null);
+        if (multis != null && multis.size() < multiNumber){
+            return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"多选题数量最多为："+multis.size());
+        }
+        //开始组卷
+        String fillIds = "";
+        String judgeIds = "";
+        String singleIds = "";
+        String multiIds = "";
+        randomListForIds(fillIds,fills,fillNumber);
+        randomListForIds(judgeIds,judges,judgeNumber);
+        randomListForIds(singleIds,singles,singleNumber);
+        randomListForIds(multiIds,multis,multiNumber);
+        //计算总分
+        Double totalScore = fillNumber * paperDto.getFillScore() + judgeNumber * paperDto.getJudgeScore() +
+                singleNumber * paperDto.getSingleScore() + multiNumber * paperDto.getMultiScore();
+
+        Exam exam = new Exam();
+        exam.setId(UUID.randomUUID().toString().replace("-",""));
+        exam.setCreateTime(new Date());
+        exam.setName(paperDto.getName());
+        exam.setExamDesc(paperDto.getExamDesc());
+        exam.setFillIds(fillIds);
+        exam.setJudgeIds(judgeIds);
+        exam.setSingleIds(singleIds);
+        exam.setMultiIds(multiIds);
+        exam.setTotalTime(paperDto.getTotalTime());
+        exam.setFillScore(paperDto.getFillScore());
+        exam.setJudgeScore(paperDto.getJudgeScore());
+        exam.setSingleScore(paperDto.getSingleScore());
+        exam.setMultiScore(paperDto.getMultiScore());
+        exam.setTotalScore(totalScore);
+        exam.setIsPublish(0);
+        int count = examDao.insert(exam);
+        if (count > 0){
+            return new ResultUtil(EnumCode.OK.getValue(),"随机组卷成功");
+        }else {
+            return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"随机组卷失败");
+        }
+    }
+
+    private void randomListForIds(String ids,List<QuestionDto> list,Integer count){
+        ids = list.remove(new Random().nextInt(list.size())).getId();
+        for (int i = 1; i < count;i++){
+            ids += ","+list.remove(new Random().nextInt(list.size())).getId();
+        }
+    }
 
     @Override
     public Map<String, List<?>> getExamDetail(Exam exam) {
@@ -122,17 +191,6 @@ public class ExamServiceImpl implements ExamService {
         return this.examDao.queryById(id);
     }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
-    @Override
-    public List<Exam> queryAllByLimit(int offset, int limit) {
-        return this.examDao.queryAllByLimit(offset, limit);
-    }
 
     /**
      * 新增数据
@@ -141,9 +199,8 @@ public class ExamServiceImpl implements ExamService {
      * @return 实例对象
      */
     @Override
-    public Exam insert(Exam exam) {
-        this.examDao.insert(exam);
-        return exam;
+    public Integer insert(Exam exam) {
+        return this.examDao.insert(exam);
     }
 
     /**
@@ -153,9 +210,8 @@ public class ExamServiceImpl implements ExamService {
      * @return 实例对象
      */
     @Override
-    public Exam update(Exam exam) {
-        this.examDao.update(exam);
-        return this.queryById(exam.getId());
+    public Integer update(Exam exam) {
+        return this.examDao.update(exam);
     }
 
     /**
@@ -165,7 +221,8 @@ public class ExamServiceImpl implements ExamService {
      * @return 是否成功
      */
     @Override
-    public boolean deleteById(String id) {
-        return this.examDao.deleteById(id) > 0;
+    public Integer deleteById(String id) {
+        return this.examDao.deleteById(id);
     }
+
 }

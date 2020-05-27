@@ -1,5 +1,8 @@
 package com.qxf.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -21,8 +24,10 @@ public class Exam implements Serializable {
      **/
     private String name;
 
+    @JsonFormat(shape= JsonFormat.Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date createTime;
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date updateTime;
     /**
     * 考试介绍
@@ -55,23 +60,23 @@ public class Exam implements Serializable {
     /**
     * 单选题分数
     */
-    private Integer singleScore;
+    private Double singleScore;
     /**
     * 多选题分数
     */
-    private Integer multiScore;
+    private Double multiScore;
     /**
     * 判断题分数
     */
-    private Integer judgeScore;
+    private Double judgeScore;
     /**
     * 填空题分数
     */
-    private Integer fillScore;
+    private Double fillScore;
     /**
     * 总分
     */
-    private Integer totalScore;
+    private Double totalScore;
     /**
     * 单选题id集合
     */
@@ -94,6 +99,22 @@ public class Exam implements Serializable {
      */
     private Integer isPublish;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -108,30 +129,6 @@ public class Exam implements Serializable {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getIsPublish() {
-        return isPublish;
-    }
-
-    public void setIsPublish(Integer isPublish) {
-        this.isPublish = isPublish;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getExamDesc() {
@@ -190,43 +187,43 @@ public class Exam implements Serializable {
         this.examType = examType;
     }
 
-    public Integer getSingleScore() {
+    public Double getSingleScore() {
         return singleScore;
     }
 
-    public void setSingleScore(Integer singleScore) {
+    public void setSingleScore(Double singleScore) {
         this.singleScore = singleScore;
     }
 
-    public Integer getMultiScore() {
+    public Double getMultiScore() {
         return multiScore;
     }
 
-    public void setMultiScore(Integer multiScore) {
+    public void setMultiScore(Double multiScore) {
         this.multiScore = multiScore;
     }
 
-    public Integer getJudgeScore() {
+    public Double getJudgeScore() {
         return judgeScore;
     }
 
-    public void setJudgeScore(Integer judgeScore) {
+    public void setJudgeScore(Double judgeScore) {
         this.judgeScore = judgeScore;
     }
 
-    public Integer getFillScore() {
+    public Double getFillScore() {
         return fillScore;
     }
 
-    public void setFillScore(Integer fillScore) {
+    public void setFillScore(Double fillScore) {
         this.fillScore = fillScore;
     }
 
-    public Integer getTotalScore() {
+    public Double getTotalScore() {
         return totalScore;
     }
 
-    public void setTotalScore(Integer totalScore) {
+    public void setTotalScore(Double totalScore) {
         this.totalScore = totalScore;
     }
 
@@ -262,4 +259,11 @@ public class Exam implements Serializable {
         this.fillIds = fillIds;
     }
 
+    public Integer getIsPublish() {
+        return isPublish;
+    }
+
+    public void setIsPublish(Integer isPublish) {
+        this.isPublish = isPublish;
+    }
 }
