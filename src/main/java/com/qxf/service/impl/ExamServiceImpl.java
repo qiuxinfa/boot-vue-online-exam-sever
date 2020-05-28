@@ -38,6 +38,20 @@ public class ExamServiceImpl implements ExamService {
     private FillQuestionDao fillQuestionDao;
 
     @Override
+    public Map<String, Integer> getCount() {
+        Map<String, Integer> map = new HashMap<>(4);
+        int fill = fillQuestionDao.getCount();
+        int judge = judgeQuestionDao.getCount();
+        int single = singleQuestionDao.getCount();
+        int multi = multiQuestionDao.getCount();
+        map.put("fillCount",fill);
+        map.put("judgeCount",judge);
+        map.put("singleCount",single);
+        map.put("multiCount",multi);
+        return map;
+    }
+
+    @Override
     public ResultUtil addPaperByRandom(PaperDto paperDto) {
         // 解析随机组卷的内容
         Integer fillNumber = paperDto.getFillNumber();

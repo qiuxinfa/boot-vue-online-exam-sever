@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName PaperController
@@ -39,4 +40,9 @@ public class PaperController {
         return examService.addPaperByRandom(paperDto);
     }
 
+    @GetMapping("/count")
+    public ResultUtil countByType(){
+        Map<String, Integer> count = examService.getCount();
+        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",count);
+    }
 }

@@ -15,6 +15,7 @@ import java.util.Map;
  * @since 2020-05-17 11:25:40
  */
 public interface ExamService {
+    Map<String,Integer> getCount();
 
     ResultUtil addPaperByRandom(PaperDto paperDto);
 

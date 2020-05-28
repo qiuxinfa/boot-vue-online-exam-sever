@@ -13,6 +13,9 @@ import java.util.List;
  * @since 2020-05-17 11:25:40
  */
 public interface FillQuestionDao {
+
+    int getCount();
+
     List<QuestionDto> getListByPage(@Param("content") String content);
     /**
      * 通过ID查询单条数据

@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80a1a1e7-f9bf-41fa-8b21-f9f64f9ad878" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/PaperController.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/qxf/dto/PaperDto.class" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/dao/FillQuestionDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/dao/FillQuestionDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/dao/JudgeQuestionDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/dao/JudgeQuestionDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/dao/MultiQuestionDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/dao/MultiQuestionDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/dao/SingleQuestionDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/dao/SingleQuestionDao.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/service/ExamService.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/service/ExamService.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/ExamServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/ExamServiceImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/FillQuestionDao.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/FillQuestionDao.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/JudgeQuestionDao.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/JudgeQuestionDao.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MultiQuestionDao.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MultiQuestionDao.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SingleQuestionDao.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/SingleQuestionDao.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,7 +52,138 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="PaperController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="472">
+              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExamService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/ExamService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExamServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/impl/ExamServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="714">
+              <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JudgeQuestionDao.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/JudgeQuestionDao.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="20" selection-end-column="13" />
+              <folding>
+                <marker date="1590670758175" expanded="true" signature="1177:1212" ph="SELECT COUNT... judge_question" />
+                <marker date="1590670758175" expanded="true" signature="1346:1666" ph="SELECT t.id,... judge_question" />
+                <marker date="1590670758175" expanded="true" signature="1346:1853" ph="SELECT t.id,... judge_question" />
+                <marker date="1590670758175" expanded="true" signature="1493:1597" ph="SELECT d.dic... dict" />
+                <marker date="1590670758175" expanded="true" signature="1949:2174" ph="select id, c... judge_question" />
+                <marker date="1590670758175" expanded="true" signature="2280:2514" ph="select id, c... judge_question" />
+                <marker date="1590670758175" expanded="true" signature="4155:4509" ph="insert into boot_vue_online_exam.judge_question... " />
+                <marker date="1590670758175" expanded="true" signature="4578:5788" ph="update boot_vue_online_exam.judge_question... " />
+                <marker date="1590670758175" expanded="true" signature="5859:5923" ph="delete from boot_vue_online_exam.judge_question... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MultiQuestionDao.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MultiQuestionDao.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="24" selection-end-column="13" />
+              <folding>
+                <marker date="1590670757991" expanded="true" signature="1473:1508" ph="SELECT COUNT... multi_question" />
+                <marker date="1590670757991" expanded="true" signature="1642:2047" ph="SELECT t.id,... multi_question" />
+                <marker date="1590670757991" expanded="true" signature="1642:2234" ph="SELECT t.id,... multi_question" />
+                <marker date="1590670757991" expanded="true" signature="1874:1978" ph="SELECT d.dic... dict" />
+                <marker date="1590670757991" expanded="true" signature="2330:2595" ph="select id, c... multi_question" />
+                <marker date="1590670757991" expanded="true" signature="2701:2975" ph="select id, c... multi_question" />
+                <marker date="1590670757991" expanded="true" signature="5128:5570" ph="insert into boot_vue_online_exam.multi_question... " />
+                <marker date="1590670757991" expanded="true" signature="5639:7309" ph="update boot_vue_online_exam.multi_question... " />
+                <marker date="1590670757991" expanded="true" signature="7380:7444" ph="delete from boot_vue_online_exam.multi_question... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SingleQuestionDao.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SingleQuestionDao.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="24" />
+              <folding>
+                <marker date="1590670758331" expanded="true" signature="1476:1512" ph="SELECT COUNT... single_question" />
+                <marker date="1590670758331" expanded="true" signature="1646:2052" ph="SELECT t.id,... single_question" />
+                <marker date="1590670758331" expanded="true" signature="1646:2239" ph="SELECT t.id,... single_question" />
+                <marker date="1590670758331" expanded="true" signature="1878:1982" ph="SELECT d.dic... dict" />
+                <marker date="1590670758331" expanded="true" signature="2336:2602" ph="select id, c... single_question" />
+                <marker date="1590670758331" expanded="true" signature="2709:2984" ph="select id, c... single_question" />
+                <marker date="1590670758331" expanded="true" signature="5139:5582" ph="insert into boot_vue_online_exam.single_question... " />
+                <marker date="1590670758331" expanded="true" signature="5651:7322" ph="update boot_vue_online_exam.single_question... " />
+                <marker date="1590670758331" expanded="true" signature="7393:7458" ph="delete from boot_vue_online_exam.single_question... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FillQuestionDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/FillQuestionDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JudgeQuestionDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/JudgeQuestionDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MultiQuestionDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/MultiQuestionDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SingleQuestionDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/SingleQuestionDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -113,27 +253,27 @@
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/JudgeQuestionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/MultiQuestionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/SingleQuestionServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/FillQuestionDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/JudgeQuestionDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/MultiQuestionDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/SingleQuestionDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/SingleQuestionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/MultiQuestionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/JudgeQuestionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/FillQuestionController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dto/QuestionDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/ExamDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dto/PaperDto.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ExamDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/entity/Exam.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/FillQuestionDao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/JudgeQuestionDao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/MultiQuestionDao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/SingleQuestionDao.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dto/QuestionDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/ExamDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/FillQuestionDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/JudgeQuestionDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/MultiQuestionDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/SingleQuestionDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/ExamService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dto/PaperDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/ExamServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/ExamDao.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/entity/Exam.java" />
       </list>
     </option>
   </component>
@@ -633,6 +773,79 @@
               <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qxf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qxf" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qxf" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qxf" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qxf" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -874,7 +1087,7 @@
       <workItem from="1590503412472" duration="5724000" />
       <workItem from="1590579181263" duration="6206000" />
       <workItem from="1590589902023" duration="3902000" />
-      <workItem from="1590664062101" duration="608000" />
+      <workItem from="1590664062101" duration="2278000" />
     </task>
     <task id="LOCAL-00001" summary="重构代码">
       <created>1589687365206</created>
@@ -971,10 +1184,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214005000" />
+    <option name="totallyTimeSpent" value="215675000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3030303" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
@@ -985,8 +1199,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4318182" sideWeight="0.4978678" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4318182" sideWeight="0.4978678" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864866" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -995,7 +1210,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22334754" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22334754" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1005,7 +1220,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1046,7 +1260,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="99" />
+      <option name="time" value="102" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1071,6 +1285,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1201,34 +1416,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/FillQuestionDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/JudgeQuestionDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/MultiQuestionDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/SingleQuestionDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="22" column="40" lean-forward="false" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamRecordController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1407">
@@ -1285,31 +1472,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MultiQuestionDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="25" selection-end-column="131" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SingleQuestionDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" column="131" lean-forward="false" selection-start-line="25" selection-start-column="131" selection-end-line="25" selection-end-column="131" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/JudgeQuestionDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="81" />
         </state>
       </provider>
     </entry>
@@ -1324,14 +1490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1239">
           <caret line="63" column="18" lean-forward="false" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/ExamService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1354,13 +1512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/FillQuestionDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="27" column="38" lean-forward="false" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1441,31 +1592,6 @@
             <element signature="e#2249#2250#0" expanded="false" />
             <element signature="e#2300#2301#0" expanded="false" />
             <element signature="e#2342#2343#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="37" column="51" lean-forward="false" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/impl/ExamServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="e#6925#6926#0" expanded="false" />
-            <element signature="e#6973#6974#0" expanded="false" />
-            <element signature="e#7106#7107#0" expanded="false" />
-            <element signature="e#7154#7155#0" expanded="false" />
-            <element signature="e#7291#7292#0" expanded="false" />
-            <element signature="e#7341#7342#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1584,6 +1710,135 @@
             <element signature="e#4933#4934#0" expanded="false" />
             <element signature="e#4975#4976#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/FillQuestionDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <marker date="1590670757843" expanded="true" signature="1174:1208" ph="SELECT COUNT... fill_question" />
+            <marker date="1590670757843" expanded="true" signature="1342:1677" ph="SELECT t.id,... fill_question" />
+            <marker date="1590670757843" expanded="true" signature="1342:1699" ph="SELECT t.id,... fill_question" />
+            <marker date="1590670757843" expanded="true" signature="1342:1878" ph="SELECT t.id,... fill_question" />
+            <marker date="1590670757843" expanded="true" signature="1503:1607" ph="SELECT d.dic... dict" />
+            <marker date="1590670757843" expanded="true" signature="1974:2198" ph="select id, c... fill_question" />
+            <marker date="1590670757843" expanded="true" signature="2303:2536" ph="select id, c... fill_question" />
+            <marker date="1590670757843" expanded="true" signature="4175:4528" ph="insert into boot_vue_online_exam.fill_question... " />
+            <marker date="1590670757843" expanded="true" signature="4597:5806" ph="update boot_vue_online_exam.fill_question... " />
+            <marker date="1590670757843" expanded="true" signature="5877:5940" ph="delete from boot_vue_online_exam.fill_question... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/JudgeQuestionDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <marker date="1590670758175" expanded="true" signature="1177:1212" ph="SELECT COUNT... judge_question" />
+            <marker date="1590670758175" expanded="true" signature="1346:1666" ph="SELECT t.id,... judge_question" />
+            <marker date="1590670758175" expanded="true" signature="1346:1853" ph="SELECT t.id,... judge_question" />
+            <marker date="1590670758175" expanded="true" signature="1493:1597" ph="SELECT d.dic... dict" />
+            <marker date="1590670758175" expanded="true" signature="1949:2174" ph="select id, c... judge_question" />
+            <marker date="1590670758175" expanded="true" signature="2280:2514" ph="select id, c... judge_question" />
+            <marker date="1590670758175" expanded="true" signature="4155:4509" ph="insert into boot_vue_online_exam.judge_question... " />
+            <marker date="1590670758175" expanded="true" signature="4578:5788" ph="update boot_vue_online_exam.judge_question... " />
+            <marker date="1590670758175" expanded="true" signature="5859:5923" ph="delete from boot_vue_online_exam.judge_question... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MultiQuestionDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <marker date="1590670757991" expanded="true" signature="1473:1508" ph="SELECT COUNT... multi_question" />
+            <marker date="1590670757991" expanded="true" signature="1642:2047" ph="SELECT t.id,... multi_question" />
+            <marker date="1590670757991" expanded="true" signature="1642:2234" ph="SELECT t.id,... multi_question" />
+            <marker date="1590670757991" expanded="true" signature="1874:1978" ph="SELECT d.dic... dict" />
+            <marker date="1590670757991" expanded="true" signature="2330:2595" ph="select id, c... multi_question" />
+            <marker date="1590670757991" expanded="true" signature="2701:2975" ph="select id, c... multi_question" />
+            <marker date="1590670757991" expanded="true" signature="5128:5570" ph="insert into boot_vue_online_exam.multi_question... " />
+            <marker date="1590670757991" expanded="true" signature="5639:7309" ph="update boot_vue_online_exam.multi_question... " />
+            <marker date="1590670757991" expanded="true" signature="7380:7444" ph="delete from boot_vue_online_exam.multi_question... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SingleQuestionDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="24" />
+          <folding>
+            <marker date="1590670758331" expanded="true" signature="1476:1512" ph="SELECT COUNT... single_question" />
+            <marker date="1590670758331" expanded="true" signature="1646:2052" ph="SELECT t.id,... single_question" />
+            <marker date="1590670758331" expanded="true" signature="1646:2239" ph="SELECT t.id,... single_question" />
+            <marker date="1590670758331" expanded="true" signature="1878:1982" ph="SELECT d.dic... dict" />
+            <marker date="1590670758331" expanded="true" signature="2336:2602" ph="select id, c... single_question" />
+            <marker date="1590670758331" expanded="true" signature="2709:2984" ph="select id, c... single_question" />
+            <marker date="1590670758331" expanded="true" signature="5139:5582" ph="insert into boot_vue_online_exam.single_question... " />
+            <marker date="1590670758331" expanded="true" signature="5651:7322" ph="update boot_vue_online_exam.single_question... " />
+            <marker date="1590670758331" expanded="true" signature="7393:7458" ph="delete from boot_vue_online_exam.single_question... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/FillQuestionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="16" column="4" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/JudgeQuestionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/MultiQuestionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/SingleQuestionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/ExamService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/impl/ExamServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
