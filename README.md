@@ -14,14 +14,14 @@
 
 在线组卷：  
 
-![Alt text](https://gitee.com/qiuxinfa/boot-vue-online-exam-sever/blob/master/photos/%E9%9A%8F%E6%9C%BA%E7%BB%84%E5%8D%B7%E8%A1%A8%E5%8D%95.png)
+![image](photos/随机组卷表单.png)
 
-![Alt text](https://gitee.com/qiuxinfa/boot-vue-online-exam-sever/blob/master/photos/%E9%9A%8F%E6%9C%BA%E7%BB%84%E5%8D%B7%E6%88%90%E5%8A%9F.png)
+![image](photos/随机组卷成功.png)
 
 在线参加考试：
 
-![Alt text](https://gitee.com/qiuxinfa/boot-vue-online-exam-sever/blob/master/photos/%E5%8F%82%E8%80%83%E8%80%83%E8%AF%95.png)
+![image](photos/参考考试.png)
 
 查看试卷：
 
-![Alt text](https://gitee.com/qiuxinfa/boot-vue-online-exam-sever/blob/master/photos/%E5%8F%82%E8%80%83%E8%80%83%E8%AF%95.png)
+![image](photos/查看试卷.png)
