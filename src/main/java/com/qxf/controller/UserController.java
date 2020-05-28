@@ -15,6 +15,8 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -96,17 +98,26 @@ public class UserController {
     public ResultUtil login(@RequestBody User user, HttpServletRequest request,
                                         HttpServletResponse response) throws JsonProcessingException {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+        Authentication authentication = null;
         //认证
-        Authentication authentication = authenticationManagerBuilder.getObject().authenticate(token);
+        try {
+             authentication = authenticationManagerBuilder.getObject().authenticate(token);
+        }catch (DisabledException e){
+            System.out.println("账号被禁止登录。。。。");
+            return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"账号已被禁止登录，请联系管理员！");
+        }catch (Exception e){
+            System.out.println("其他认证异常。。");
+            return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"用户名或密码错误！");
+        }
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
         // 生成令牌
         String jwtToken = tokenProvider.createToken(authentication);
         // 返回 token 与 用户信息
-        Map<String,Object> authInfo = new HashMap<String,Object>(3){{
-            put("token", securityProperties.getTokenStartWith() + jwtToken);
-            put("tokenExpiredTime",new Date().getTime() + securityProperties.getTokenValidityInSeconds());
-            put("user",authentication.getPrincipal());
-        }};
+        Map<String,Object> authInfo = new HashMap<>(3);
+        authInfo.put("token", securityProperties.getTokenStartWith() + jwtToken);
+        authInfo.put("tokenExpiredTime",new Date().getTime() + securityProperties.getTokenValidityInSeconds());
+        authInfo.put("user",authentication.getPrincipal());
         logger.info(user.getUsername()+" ：登录成功");
         return new ResultUtil(EnumCode.OK.getValue(),"登录成功！",authInfo);
     }

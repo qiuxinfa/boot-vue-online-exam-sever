@@ -68,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // httpMethod options
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                // 账号相关
+                // 账号相关，其中"/api/file/**"和头像上传相关
                 .antMatchers("/user/login","/user/register","/user/refreshToken","/api/file/**").permitAll()
                 // 文件上传
                 //.antMatchers("/file/upload/**").permitAll()
