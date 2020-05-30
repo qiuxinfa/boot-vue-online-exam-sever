@@ -1,11 +1,14 @@
 package com.qxf.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.qxf.dao.PermissionDao;
+import com.qxf.dao.RoleDao;
 import com.qxf.dto.JwtDto;
+import com.qxf.entity.Permission;
+import com.qxf.entity.Role;
 import com.qxf.entity.User;
 import com.qxf.security.config.TokenProvider;
 import com.qxf.security.property.SecurityProperties;
-import com.qxf.service.UserService;
 import com.qxf.util.EnumCode;
 import com.qxf.util.ResultUtil;
 import org.slf4j.Logger;
@@ -16,16 +19,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @ClassName LoginController
@@ -38,8 +36,9 @@ import java.util.Map;
 public class LoginController {
     private static Logger logger = LoggerFactory.getLogger(LoginController.class);
     @Autowired
-    private UserService userService;
-
+    private RoleDao roleDao;
+    @Autowired
+    private PermissionDao permissionDao;
     @Autowired
     private AuthenticationManagerBuilder authenticationManagerBuilder;
 
@@ -117,6 +116,30 @@ public class LoginController {
         }
 
         return new ResultUtil(EnumCode.OK.getValue(),"刷新token成功！",authInfo);
+    }
+
+    //查询权限
+    @GetMapping("/menu")
+    public ResultUtil getMenuList(String userId){
+        if (userId == null || "".equals(userId)){
+            userId = "67eb71f1091911eab9205c93a27933da";
+        }
+        //根据用户id，查询角色列表
+        List<Role> roles = roleDao.getRolesByUserId(userId);
+        List<Permission> permissions = new ArrayList<>();
+        if (roles != null && roles.size() > 0){
+            //根据角色id，查询权限列表
+            for (Role role : roles){
+                // 如果是多个角色的话，这里最好去重，不去重也没有影响
+                permissions.addAll(permissionDao.getPermissionListByRoleId(role.getId()));
+            }
+        }
+        return new ResultUtil(EnumCode.OK.getValue(),"",permissions);
+    }
+
+    @PostMapping("/logout")
+    public ResultUtil logout(){
+        return new ResultUtil(EnumCode.OK.getValue(),"已退出登录！");
     }
 
 }

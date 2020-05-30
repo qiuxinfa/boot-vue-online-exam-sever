@@ -38,7 +38,6 @@ public class UserController {
     @GetMapping("/list")
     public Object getListByPage(Integer startPage,Integer pageSize,String username){
         PageHelper.startPage(startPage,pageSize);
-        //查询自己的考试记录
         List<User> list = userService.getListByPage(username);
         PageInfo<User> pageInfo = new PageInfo<>(list);
         return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,pageInfo.getTotal());

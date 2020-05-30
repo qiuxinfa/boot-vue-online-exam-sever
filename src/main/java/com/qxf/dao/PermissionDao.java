@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface PermissionDao {
 
+    List<Permission> getPermissionListByRoleId(@Param("roleId") String roleId);
     /**
      * 通过ID查询单条数据
      *
