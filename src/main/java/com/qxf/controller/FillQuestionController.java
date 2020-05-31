@@ -2,6 +2,7 @@ package com.qxf.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.qxf.annotation.MyLog;
 import com.qxf.dto.QuestionDto;
 import com.qxf.entity.FillQuestion;
 import com.qxf.service.FillQuestionService;
@@ -31,6 +32,7 @@ public class FillQuestionController {
 
     // 分页查询
     @GetMapping("/list")
+    @MyLog
     public Object getListByPage(Integer startPage,Integer pageSize,String content){
         PageHelper.startPage(startPage,pageSize);
         List<QuestionDto> list = fillQuestionService.getListByPage(content);
@@ -39,6 +41,7 @@ public class FillQuestionController {
     }
 
     @PostMapping("/add")
+    @MyLog
     public ResultUtil add(@RequestBody FillQuestion fillQuestion){
         fillQuestion.setId(UUID.randomUUID().toString().replace("-",""));
         fillQuestion.setCreateTime(new Date());
@@ -49,16 +52,6 @@ public class FillQuestionController {
             return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"请求失败");
         }
 
-    }
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public FillQuestion selectOne(String id) {
-        return this.fillQuestionService.queryById(id);
     }
 
 }

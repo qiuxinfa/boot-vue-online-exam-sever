@@ -1,15 +1,19 @@
 package com.qxf.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.qxf.dao.LoginLogDao;
 import com.qxf.dao.PermissionDao;
 import com.qxf.dao.RoleDao;
 import com.qxf.dto.JwtDto;
+import com.qxf.entity.LoginLog;
 import com.qxf.entity.Permission;
 import com.qxf.entity.Role;
 import com.qxf.entity.User;
 import com.qxf.security.config.TokenProvider;
 import com.qxf.security.property.SecurityProperties;
+import com.qxf.service.UserService;
 import com.qxf.util.EnumCode;
+import com.qxf.util.IPUtil;
 import com.qxf.util.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +23,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,10 +40,16 @@ import java.util.*;
 @RequestMapping("auth")
 public class LoginController {
     private static Logger logger = LoggerFactory.getLogger(LoginController.class);
+
+    @Autowired
+    private UserService userService;
     @Autowired
     private RoleDao roleDao;
     @Autowired
     private PermissionDao permissionDao;
+    @Autowired
+    private LoginLogDao loginLogDao;
+
     @Autowired
     private AuthenticationManagerBuilder authenticationManagerBuilder;
 
@@ -74,6 +85,18 @@ public class LoginController {
         authInfo.put("tokenExpiredTime",new Date().getTime() + securityProperties.getTokenValidityInSeconds());
         authInfo.put("user",authentication.getPrincipal());
         logger.info(user.getUsername()+" ：登录成功");
+        //更新登录时间
+        User u = new User();
+        User currentUser = (User)authentication.getPrincipal();
+        u.setId(currentUser.getId());
+        u.setLastLoginTime(new Date());
+        userService.updateUser(u);
+        LoginLog loginLog = new LoginLog();
+        loginLog.setId(UUID.randomUUID().toString().replace("-",""));
+        loginLog.setLoginTime(new Date());
+        loginLog.setUserId(currentUser.getId());
+        loginLog.setIp(IPUtil.getIPAddress(request));
+        loginLogDao.addLoginLog(loginLog);
         return new ResultUtil(EnumCode.OK.getValue(),"登录成功！",authInfo);
     }
 

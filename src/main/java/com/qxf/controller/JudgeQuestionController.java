@@ -2,6 +2,7 @@ package com.qxf.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.qxf.annotation.MyLog;
 import com.qxf.dto.QuestionDto;
 import com.qxf.entity.JudgeQuestion;
 import com.qxf.service.JudgeQuestionService;
@@ -31,6 +32,7 @@ public class JudgeQuestionController {
 
     // 分页查询
     @GetMapping("/list")
+    @MyLog
     public Object getListByPage(Integer startPage,Integer pageSize,String content){
         PageHelper.startPage(startPage,pageSize);
         List<QuestionDto> list = judgeQuestionService.getListByPage(content);
@@ -39,6 +41,7 @@ public class JudgeQuestionController {
     }
 
     @PostMapping("/add")
+    @MyLog
     public ResultUtil add(@RequestBody JudgeQuestion judgeQuestion){
         judgeQuestion.setId(UUID.randomUUID().toString().replace("-",""));
         judgeQuestion.setCreateTime(new Date());
@@ -49,17 +52,6 @@ public class JudgeQuestionController {
             return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"请求失败");
         }
 
-    }
-
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public JudgeQuestion selectOne(String id) {
-        return this.judgeQuestionService.queryById(id);
     }
 
 }

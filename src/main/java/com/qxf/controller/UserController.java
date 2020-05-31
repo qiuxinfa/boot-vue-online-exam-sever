@@ -2,6 +2,7 @@ package com.qxf.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.qxf.annotation.MyLog;
 import com.qxf.entity.User;
 import com.qxf.service.UserService;
 import com.qxf.util.EnumCode;
@@ -36,6 +37,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/list")
+    @MyLog
     public Object getListByPage(Integer startPage,Integer pageSize,String username){
         PageHelper.startPage(startPage,pageSize);
         List<User> list = userService.getListByPage(username);
@@ -44,6 +46,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
+    @MyLog
     public ResultUtil addUser(@RequestBody User user){
         String msg = "新增失败！";
         Integer cnt = userService.addUser(user);
@@ -54,6 +57,7 @@ public class UserController {
     }
 
     @PostMapping("/update")
+    @MyLog
     public ResultUtil updateUser(@RequestBody User user){
         String msg = "修改失败！";
         Integer cnt = userService.updateUser(user);
@@ -64,6 +68,7 @@ public class UserController {
     }
 
     @PostMapping("/delete")
+    @MyLog
     public ResultUtil deleteUser(String id){
         String msg = "0";
         Integer cnt = userService.deleteUser(id);
@@ -85,6 +90,7 @@ public class UserController {
 
     //文件上传
     @RequestMapping("/upload")
+    @MyLog
     public Object uploadFile(MultipartFile[] multipartFiles){
         String fileName = "";
         File fileDir = new File(rootPath);
@@ -131,6 +137,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("/download")
+    @MyLog
     public Object downloadFile(@RequestParam String fileName, HttpServletResponse response){
         OutputStream os = null;
         InputStream is= null;

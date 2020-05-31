@@ -1,5 +1,6 @@
 package com.qxf.controller;
 
+import com.qxf.annotation.MyLog;
 import com.qxf.entity.Role;
 import com.qxf.service.RoleService;
 import com.qxf.util.EnumCode;
@@ -25,6 +26,7 @@ public class RoleController {
     private RoleService roleService;
 
     @GetMapping("/list")
+    @MyLog
     public ResultUtil getRoleList(){
         List<Role> roleList = roleService.getRoleList();
         return new ResultUtil(EnumCode.OK.getValue(),"获取角色列表成功",roleList);

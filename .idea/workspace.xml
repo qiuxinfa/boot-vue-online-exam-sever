@@ -2,13 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80a1a1e7-f9bf-41fa-8b21-f9f64f9ad878" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/security/config/BaseUrlControl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/entity/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/entity/User.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/annotation/MyLog.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/aspect/LogAspect.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/dao/LoginLogDao.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/dao/OperateLogDao.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/entity/LoginLog.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/entity/OperateLog.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/util/HttpContextUtil.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/util/IPUtil.java" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/DictController.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamRecordController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamRecordController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/FillQuestionController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/FillQuestionController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/JudgeQuestionController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/JudgeQuestionController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/LoginController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/MultiQuestionController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/MultiQuestionController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/PermissionController.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/QuestionController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/QuestionController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/RoleController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/RoleController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/RolePermissionController.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/SingleQuestionController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/SingleQuestionController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/controller/UserController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/controller/UserRoleController.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/security/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/security/config/SecurityConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/UserServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/entity/User.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/entity/User.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/security/config/SecurityConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/security/config/SecurityConfig.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/service/impl/UserServiceImpl.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/DictController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/ExamController.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/ExamController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/ExamRecordController.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/ExamRecordController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/FillQuestionController.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/FillQuestionController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/JudgeQuestionController.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/JudgeQuestionController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/LoginController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/MultiQuestionController.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/MultiQuestionController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/PaperController.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/PaperController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/PermissionController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/QuestionController.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/QuestionController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/RoleController.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/RoleController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/RolePermissionController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/SingleQuestionController.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/SingleQuestionController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/UserController$1.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/UserController$1.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/qxf/controller/UserController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qxf/controller/UserRoleController.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -49,46 +83,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39">
-              <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+            <state relative-caret-position="42">
+              <caret line="78" column="75" lean-forward="false" selection-start-line="78" selection-start-column="61" selection-end-line="78" selection-end-column="75" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/entity/User.java">
+      <file leaf-file-name="LogAspect.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/aspect/LogAspect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="124" column="29" lean-forward="false" selection-start-line="124" selection-start-column="29" selection-end-line="124" selection-end-column="29" />
-              <folding>
-                <element signature="e#1106#1107#0" expanded="true" />
-                <element signature="e#1140#1141#0" expanded="true" />
-                <element signature="e#1204#1205#0" expanded="true" />
-                <element signature="e#1250#1251#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/impl/UserServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="60" column="43" lean-forward="false" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseUrlControl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/config/BaseUrlControl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="61" column="31" lean-forward="false" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+            <state relative-caret-position="231">
+              <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,31 +105,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JwtAccessDeniedHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/config/JwtAccessDeniedHandler.java">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/entity/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            <state relative-caret-position="119">
+              <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JwtAuthenticationEntryPoint.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/config/JwtAuthenticationEntryPoint.java">
+      <file leaf-file-name="User.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.6.RELEASE/spring-security-core-5.1.6.RELEASE.jar!/org/springframework/security/core/userdetails/User.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+            <state relative-caret-position="63">
+              <caret line="30" column="35" lean-forward="false" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AntPathRequestMatcher.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.6.RELEASE/spring-security-web-5.1.6.RELEASE.jar!/org/springframework/security/web/util/matcher/AntPathRequestMatcher.class">
+      <file leaf-file-name="UserDetails.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.6.RELEASE/spring-security-core-5.1.6.RELEASE.jar!/org/springframework/security/core/userdetails/UserDetails.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="96" column="5" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="98" selection-end-column="13" />
+            <state relative-caret-position="63">
+              <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractAspectJAdvice.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.1.9.RELEASE/spring-aop-5.1.9.RELEASE-sources.jar!/org/springframework/aop/aspectj/AbstractAspectJAdvice.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="650" column="0" lean-forward="false" selection-start-line="650" selection-start-column="0" selection-end-line="650" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -129,8 +148,8 @@
       <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/config/SecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="91" column="22" lean-forward="true" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="22" />
+            <state relative-caret-position="966">
+              <caret line="61" column="7" lean-forward="false" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -141,8 +160,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -160,6 +180,7 @@
       <find>deleteUser</find>
       <find>: '',</find>
       <find>SecurityContextHolder</find>
+      <find>User</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -177,17 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/security/config/TokenFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/RoleDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/RoleService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/RoleServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserRoleDao.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/config/MyWebConfigurer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamRecordController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/ExamRecordDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/FillQuestionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/JudgeQuestionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/MultiQuestionService.java" />
@@ -196,12 +206,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/JudgeQuestionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/MultiQuestionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/SingleQuestionServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/SingleQuestionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/MultiQuestionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/JudgeQuestionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/FillQuestionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/dto/QuestionDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/ExamDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/dto/PaperDto.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/ExamDao.xml" />
@@ -216,18 +221,34 @@
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/SingleQuestionDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/ExamService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/ExamServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/QuestionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/RoleDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/PermissionDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/PermissionDao.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/entity/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/qxf/security/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/qxf/security/config/BaseUrlControl.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/entity/LoginLog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/entity/OperateLog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/LoginLogDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/dao/OperateLogDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/util/IPUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/annotation/MyLog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/util/HttpContextUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/MultiQuestionController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/JudgeQuestionController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/FillQuestionController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamRecordController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/QuestionController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/RoleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/SingleQuestionController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/security/config/SecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/qxf/aspect/LogAspect.java" />
       </list>
     </option>
   </component>
@@ -711,10 +732,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -747,6 +767,24 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="qxf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qxf" type="462c0819:PsiDirectoryNode" />
+              <item name="annotation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qxf" type="462c0819:PsiDirectoryNode" />
+              <item name="aspect" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
@@ -837,6 +875,15 @@
               <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="qxf" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boot-vue-online-exam-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boot-vue-online-exam-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -851,6 +898,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1094,7 +1142,8 @@
       <workItem from="1590793874414" duration="10721000" />
       <workItem from="1590839174446" duration="5251000" />
       <workItem from="1590854567440" duration="1577000" />
-      <workItem from="1590883371965" duration="6323000" />
+      <workItem from="1590883371965" duration="7345000" />
+      <workItem from="1590918469361" duration="10170000" />
     </task>
     <task id="LOCAL-00001" summary="重构代码">
       <created>1589687365206</created>
@@ -1191,11 +1240,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247176000" />
+    <option name="totallyTimeSpent" value="258368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3030303" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
@@ -1206,7 +1254,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.51731604" sideWeight="0.4978678" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.521645" sideWeight="0.4978678" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1279,12 +1327,21 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="130" />
+      <option name="time" value="135" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="SecurityContextHolder.getContext().getAuthentication().getPrincipal()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>SecurityContextHolder.getContext().getAuthentication().getPrincipal()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>page.getTotal()</expression-string>
         <language-id>JAVA</language-id>
@@ -1293,227 +1350,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/ExamRecordDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ExamRecordDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="75" lean-forward="false" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="75" />
-          <folding>
-            <marker date="1590322732172" expanded="true" signature="1234:1631" ph="SELECT e.id,... exam_record" />
-            <marker date="1590322732172" expanded="true" signature="1234:1642" ph="SELECT e.id,... exam_record" />
-            <marker date="1590322732172" expanded="true" signature="1234:1950" ph="SELECT e.id,... exam_record" />
-            <marker date="1590322732172" expanded="true" signature="1329:1381" ph="SELECT u.use... user" />
-            <marker date="1590322732172" expanded="true" signature="1404:1457" ph="SELECT u.exa... exam" />
-            <marker date="1590322732172" expanded="true" signature="1480:1579" ph="SELECT u.dic... dict" />
-            <marker date="1590322732172" expanded="true" signature="1703:1791" ph="SELECT 1 fro... exam" />
-            <marker date="1590322732172" expanded="true" signature="2044:2259" ph="select id, e... exam_record" />
-            <marker date="1590322732172" expanded="true" signature="2362:2586" ph="select id, e... exam_record" />
-            <marker date="1590322732172" expanded="true" signature="4312:4651" ph="insert into boot_vue_online_exam.exam_record... " />
-            <marker date="1590322732172" expanded="true" signature="4720:5980" ph="update boot_vue_online_exam.exam_record... " />
-            <marker date="1590322732172" expanded="true" signature="6051:6112" ph="delete from boot_vue_online_exam.exam_record... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dto/PaperDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="23" column="29" lean-forward="false" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ExamDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
-          <caret line="41" column="51" lean-forward="false" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
-          <folding>
-            <marker date="1590592434023" expanded="true" signature="1968:2516" ph="select id,na... exam" />
-            <marker date="1590592434023" expanded="true" signature="2604:2886" ph="select id, e... exam" />
-            <marker date="1590592434023" expanded="true" signature="2983:3258" ph="select id, e... exam" />
-            <marker date="1590592434023" expanded="true" signature="5594:6145" ph="insert into boot_vue_online_exam.exam... " />
-            <marker date="1590592434023" expanded="true" signature="6214:8056" ph="update boot_vue_online_exam.exam... " />
-            <marker date="1590592434023" expanded="true" signature="8127:8181" ph="delete from boot_vue_online_exam.exam... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/entity/Exam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/FillQuestionDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <marker date="1590670757843" expanded="true" signature="1174:1208" ph="SELECT COUNT... fill_question" />
-            <marker date="1590670757843" expanded="true" signature="1342:1677" ph="SELECT t.id,... fill_question" />
-            <marker date="1590670757843" expanded="true" signature="1342:1699" ph="SELECT t.id,... fill_question" />
-            <marker date="1590670757843" expanded="true" signature="1342:1878" ph="SELECT t.id,... fill_question" />
-            <marker date="1590670757843" expanded="true" signature="1503:1607" ph="SELECT d.dic... dict" />
-            <marker date="1590670757843" expanded="true" signature="1974:2198" ph="select id, c... fill_question" />
-            <marker date="1590670757843" expanded="true" signature="2303:2536" ph="select id, c... fill_question" />
-            <marker date="1590670757843" expanded="true" signature="4175:4528" ph="insert into boot_vue_online_exam.fill_question... " />
-            <marker date="1590670757843" expanded="true" signature="4597:5806" ph="update boot_vue_online_exam.fill_question... " />
-            <marker date="1590670757843" expanded="true" signature="5877:5940" ph="delete from boot_vue_online_exam.fill_question... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/JudgeQuestionDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <marker date="1590670758175" expanded="true" signature="1177:1212" ph="SELECT COUNT... judge_question" />
-            <marker date="1590670758175" expanded="true" signature="1346:1666" ph="SELECT t.id,... judge_question" />
-            <marker date="1590670758175" expanded="true" signature="1346:1853" ph="SELECT t.id,... judge_question" />
-            <marker date="1590670758175" expanded="true" signature="1493:1597" ph="SELECT d.dic... dict" />
-            <marker date="1590670758175" expanded="true" signature="1949:2174" ph="select id, c... judge_question" />
-            <marker date="1590670758175" expanded="true" signature="2280:2514" ph="select id, c... judge_question" />
-            <marker date="1590670758175" expanded="true" signature="4155:4509" ph="insert into boot_vue_online_exam.judge_question... " />
-            <marker date="1590670758175" expanded="true" signature="4578:5788" ph="update boot_vue_online_exam.judge_question... " />
-            <marker date="1590670758175" expanded="true" signature="5859:5923" ph="delete from boot_vue_online_exam.judge_question... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MultiQuestionDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="24" selection-end-column="13" />
-          <folding>
-            <marker date="1590670757991" expanded="true" signature="1473:1508" ph="SELECT COUNT... multi_question" />
-            <marker date="1590670757991" expanded="true" signature="1642:2047" ph="SELECT t.id,... multi_question" />
-            <marker date="1590670757991" expanded="true" signature="1642:2234" ph="SELECT t.id,... multi_question" />
-            <marker date="1590670757991" expanded="true" signature="1874:1978" ph="SELECT d.dic... dict" />
-            <marker date="1590670757991" expanded="true" signature="2330:2595" ph="select id, c... multi_question" />
-            <marker date="1590670757991" expanded="true" signature="2701:2975" ph="select id, c... multi_question" />
-            <marker date="1590670757991" expanded="true" signature="5128:5570" ph="insert into boot_vue_online_exam.multi_question... " />
-            <marker date="1590670757991" expanded="true" signature="5639:7309" ph="update boot_vue_online_exam.multi_question... " />
-            <marker date="1590670757991" expanded="true" signature="7380:7444" ph="delete from boot_vue_online_exam.multi_question... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SingleQuestionDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="24" />
-          <folding>
-            <marker date="1590670758331" expanded="true" signature="1476:1512" ph="SELECT COUNT... single_question" />
-            <marker date="1590670758331" expanded="true" signature="1646:2052" ph="SELECT t.id,... single_question" />
-            <marker date="1590670758331" expanded="true" signature="1646:2239" ph="SELECT t.id,... single_question" />
-            <marker date="1590670758331" expanded="true" signature="1878:1982" ph="SELECT d.dic... dict" />
-            <marker date="1590670758331" expanded="true" signature="2336:2602" ph="select id, c... single_question" />
-            <marker date="1590670758331" expanded="true" signature="2709:2984" ph="select id, c... single_question" />
-            <marker date="1590670758331" expanded="true" signature="5139:5582" ph="insert into boot_vue_online_exam.single_question... " />
-            <marker date="1590670758331" expanded="true" signature="5651:7322" ph="update boot_vue_online_exam.single_question... " />
-            <marker date="1590670758331" expanded="true" signature="7393:7458" ph="delete from boot_vue_online_exam.single_question... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/FillQuestionDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/JudgeQuestionDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/MultiQuestionDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/SingleQuestionDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/ExamService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/impl/ExamServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/property/SecurityProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/config/PortalTomcatWebServerCustomizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/config/TokenFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-339">
-          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.6.RELEASE/spring-security-core-5.1.6.RELEASE.jar!/org/springframework/security/core/userdetails/UserDetailsChecker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/config/MyWebConfigurer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/9.0.22/tomcat-embed-core-9.0.22-sources.jar!/org/apache/catalina/core/ApplicationFilterChain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.6.RELEASE/spring-security-core-5.1.6.RELEASE.jar!/org/springframework/security/core/userdetails/UserDetails.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/jdk8/jdk1.8.0_131/src.zip!/java/util/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2142">
@@ -1608,70 +1444,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/UserRoleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="48" column="24" lean-forward="false" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamRecordController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="81" column="24" lean-forward="true" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/QuestionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="49" column="24" lean-forward="false" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/FillQuestionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-116">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="86" column="28" lean-forward="false" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <marker date="1590803408874" expanded="true" signature="269:316" ph="SELECT * FRO... user" />
-            <marker date="1590803408874" expanded="true" signature="420:730" ph="SELECT u.*,(... user" />
-            <marker date="1590803408874" expanded="true" signature="432:537" ph="SELECT GROUP... user_role" />
-            <marker date="1590803408874" expanded="true" signature="811:1500" ph="UPDATE user... " />
-            <marker date="1590803408874" expanded="true" signature="1578:1772" ph="INSERT INTO user... " />
-            <marker date="1590803408874" expanded="true" signature="1840:1873" ph="DELETE FROM user... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RoleDao.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1686,7 +1458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1694,7 +1465,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="16" column="64" lean-forward="false" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1702,7 +1472,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1710,7 +1479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1745,56 +1513,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="124" column="29" lean-forward="false" selection-start-line="124" selection-start-column="29" selection-end-line="124" selection-end-column="29" />
-          <folding>
-            <element signature="e#1106#1107#0" expanded="true" />
-            <element signature="e#1140#1141#0" expanded="true" />
-            <element signature="e#1204#1205#0" expanded="true" />
-            <element signature="e#1250#1251#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="60" column="43" lean-forward="false" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/config/SecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="91" column="22" lean-forward="true" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.6.RELEASE/spring-security-web-5.1.6.RELEASE.jar!/org/springframework/security/web/util/matcher/AntPathRequestMatcher.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="96" column="5" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="98" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="1680">
+          <caret line="96" column="5" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="98" selection-end-column="13" />
+          <folding>
+            <marker date="1586561100581" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1586561100581" expanded="false" signature="169:572" ph="..." />
+            <marker date="1586561100581" expanded="false" signature="1076:1087" ph=" { " />
+            <marker date="1586561100581" expanded="false" signature="1115:1121" ph=" }" />
+            <marker date="1586561100581" expanded="false" signature="1190:1201" ph=" { " />
+            <marker date="1586561100581" expanded="false" signature="1233:1239" ph=" }" />
+            <marker date="1586561100581" expanded="true" signature="1332:1410" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="1532:2425" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="2482:3416" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="3505:3764" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="3828:4234" ph="{...}" />
+            <marker date="1586561100581" expanded="false" signature="4266:4277" ph=" { " />
+            <marker date="1586561100581" expanded="false" signature="4297:4303" ph=" }" />
+            <marker date="1586561100581" expanded="true" signature="4343:4667" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="4695:4870" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="4901:5183" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="5238:5391" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="5474:6298" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="5664:5887" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="5933:6160" ph="{...}" />
+            <marker date="1586561100581" expanded="false" signature="6237:6252" ph=" { " />
+            <marker date="1586561100581" expanded="false" signature="6282:6292" ph=" }" />
+            <marker date="1586561100581" expanded="true" signature="6383:7220" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="6545:6652" ph="{...}" />
+            <marker date="1586561100581" expanded="false" signature="6697:6712" ph=" { " />
+            <marker date="1586561100581" expanded="false" signature="6761:6771" ph=" }" />
+            <marker date="1586561100581" expanded="true" signature="6849:6944" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="7021:7214" ph="{...}" />
+            <marker date="1586561100581" expanded="true" signature="7252:7368" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/config/BaseUrlControl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
+        <state relative-caret-position="1071">
           <caret line="61" column="31" lean-forward="false" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/config/JwtAuthenticationEntryPoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
+        <state relative-caret-position="399">
           <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
           <folding />
         </state>
@@ -1802,17 +1571,354 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/config/JwtAccessDeniedHandler.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="24" column="21" lean-forward="false" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
+          <folding>
+            <marker date="1590803408874" expanded="true" signature="269:316" ph="SELECT * FRO... user" />
+            <marker date="1590803408874" expanded="true" signature="420:730" ph="SELECT u.*,(... user" />
+            <marker date="1590803408874" expanded="true" signature="432:537" ph="SELECT GROUP... user_role" />
+            <marker date="1590803408874" expanded="true" signature="811:1500" ph="UPDATE user... " />
+            <marker date="1590803408874" expanded="true" signature="1578:1772" ph="INSERT INTO user... " />
+            <marker date="1590803408874" expanded="true" signature="1840:1873" ph="DELETE FROM user... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="10" column="16" lean-forward="false" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="91" column="19" lean-forward="false" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="19" />
+          <folding>
+            <element signature="e#2719#2720#0" expanded="false" />
+            <element signature="e#2766#2767#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.6.RELEASE/spring-security-core-5.1.6.RELEASE.jar!/org/springframework/security/authentication/UsernamePasswordAuthenticationToken.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="33" column="18" lean-forward="false" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+          <folding>
+            <element signature="e#1099#1100#0" expanded="true" />
+            <element signature="e#1136#1137#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/entity/LoginLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#351#352#0" expanded="true" />
+            <element signature="e#376#377#0" expanded="true" />
+            <element signature="e#412#413#0" expanded="true" />
+            <element signature="e#440#441#0" expanded="true" />
+            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#502#503#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#582#583#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+            <element signature="e#648#649#0" expanded="true" />
+            <element signature="e#696#697#0" expanded="true" />
+            <element signature="e#738#739#0" expanded="true" />
+            <element signature="e#767#768#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+            <element signature="e#828#829#0" expanded="true" />
+            <element signature="e#856#857#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/LoginLogDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/dao/OperateLogDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="64" lean-forward="false" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/util/IPUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/annotation/MyLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="10" column="14" lean-forward="false" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/util/HttpContextUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/entity/OperateLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="29" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#541#542#0" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#691#692#0" expanded="true" />
+            <element signature="e#735#736#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#805#806#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#934#935#0" expanded="true" />
+            <element signature="e#963#964#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="e#1076#1077#0" expanded="true" />
+            <element signature="e#1105#1106#0" expanded="true" />
+            <element signature="e#1149#1150#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
+            <element signature="e#1220#1221#0" expanded="true" />
+            <element signature="e#1253#1254#0" expanded="true" />
+            <element signature="e#1303#1304#0" expanded="true" />
+            <element signature="e#1347#1348#0" expanded="true" />
+            <element signature="e#1380#1381#0" expanded="true" />
+            <element signature="e#1409#1410#0" expanded="true" />
+            <element signature="e#1453#1454#0" expanded="true" />
+            <element signature="e#1489#1490#0" expanded="true" />
+            <element signature="e#1526#1527#0" expanded="true" />
+            <element signature="e#1558#1559#0" expanded="true" />
+            <element signature="e#1609#1610#0" expanded="true" />
+            <element signature="e#1651#1652#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/MultiQuestionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="54" column="5" lean-forward="false" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/JudgeQuestionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="54" column="5" lean-forward="false" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/FillQuestionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="54" column="5" lean-forward="false" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamRecordController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="100" column="5" lean-forward="false" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/PaperController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="46" column="10" lean-forward="false" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/PermissionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/QuestionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="42" column="10" lean-forward="false" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/RolePermissionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/RoleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="28" column="10" lean-forward="false" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/SingleQuestionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="53" column="5" lean-forward="false" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/UserRoleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/DictController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="131" column="0" lean-forward="true" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/ExamController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="51" column="10" lean-forward="false" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/config/MyWebConfigurer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.1.9.RELEASE/spring-aop-5.1.9.RELEASE-sources.jar!/org/springframework/aop/aspectj/AbstractAspectJAdvice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="650" column="0" lean-forward="false" selection-start-line="650" selection-start-column="0" selection-end-line="650" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.6.RELEASE/spring-security-core-5.1.6.RELEASE.jar!/org/springframework/security/core/userdetails/User.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="30" column="35" lean-forward="false" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.6.RELEASE/spring-security-core-5.1.6.RELEASE.jar!/org/springframework/security/core/userdetails/UserDetails.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+        <state relative-caret-position="42">
+          <caret line="78" column="75" lean-forward="false" selection-start-line="78" selection-start-column="61" selection-end-line="78" selection-end-column="75" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/security/config/SecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="966">
+          <caret line="61" column="7" lean-forward="false" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/qxf/aspect/LogAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

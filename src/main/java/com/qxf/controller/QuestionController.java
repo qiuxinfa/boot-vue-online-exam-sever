@@ -2,6 +2,7 @@ package com.qxf.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.qxf.annotation.MyLog;
 import com.qxf.dto.QuestionDto;
 import com.qxf.entity.FillQuestion;
 import com.qxf.service.FillQuestionService;
@@ -39,6 +40,7 @@ public class QuestionController {
     private JudgeQuestionService judgeQuestionService;
 
     @GetMapping("/list")
+    @MyLog
     public Object getListByPage(Integer startPage,Integer pageSize,String content,String questionType){
         PageHelper.startPage(startPage,pageSize);
         List<QuestionDto> list = null;

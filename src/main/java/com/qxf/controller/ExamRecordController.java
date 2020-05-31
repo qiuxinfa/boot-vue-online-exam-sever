@@ -3,6 +3,7 @@ package com.qxf.controller;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.qxf.annotation.MyLog;
 import com.qxf.dto.ExamRecordDto;
 import com.qxf.entity.Exam;
 import com.qxf.entity.ExamRecord;
@@ -39,6 +40,7 @@ public class ExamRecordController {
 
     //查看考试详细结果
     @GetMapping("/view")
+    @MyLog
     public ResultUtil viewResult(String recordId){
         //考试记录，包括了考生答案
         ExamRecord examRecord = examRecordService.queryById(recordId);
@@ -80,6 +82,7 @@ public class ExamRecordController {
      * @return java.lang.Object
      **/
     @PostMapping("/add")
+    @MyLog
     public Object addExamRecord(@RequestBody ExamRecord examRecord){
         Double finalScore = examRecord.getFinalScore();
         examRecordService.insert(examRecord);
@@ -88,22 +91,13 @@ public class ExamRecordController {
 
     //分页查询考试记录列表
     @GetMapping("/list")
+    @MyLog
     public Object getListByPage(Integer startPage,Integer pageSize,String name, String userId){
         PageHelper.startPage(startPage,pageSize);
         //查询自己的考试记录
         List<ExamRecordDto> list = examRecordService.getListByPage(name,userId);
         PageInfo<ExamRecordDto> pageInfo = new PageInfo<>(list);
         return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,pageInfo.getTotal());
-    }
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public ExamRecord selectOne(String id) {
-        return this.examRecordService.queryById(id);
     }
 
 }
