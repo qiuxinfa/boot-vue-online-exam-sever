@@ -43,11 +43,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.applicationContext = applicationContext;
     }
 
-    @Bean
-    GrantedAuthorityDefaults grantedAuthorityDefaults() {
-        // 去除 ROLE_ 前缀
-        return new GrantedAuthorityDefaults("");
-    }
+      // 如果使用了基于角色的访问控制，并且数据库角色配置为ROLE_ADMIN之类的，就用打开这个
+//    @Bean
+//    GrantedAuthorityDefaults grantedAuthorityDefaults() {
+//        // 去除 ROLE_ 前缀
+//        return new GrantedAuthorityDefaults("");
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -70,10 +71,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // 账号相关，其中"/api/file/**"和头像上传相关
                 .antMatchers("/auth/**","/api/file/**").permitAll()
-                // 文件上传
-                //.antMatchers("/file/upload/**").permitAll()
-                // 文件访问
-//                .antMatchers(uploadAccessPath).permitAll()
                 // 诊断点
                 .antMatchers("/actuator/**").permitAll()
                 // 静态资源
@@ -89,7 +86,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/swagger-resources/**").permitAll()
                 .antMatchers("/v2/**").permitAll()
                 .antMatchers("/webjars/**").permitAll()
-                .anyRequest().authenticated()
+//                .anyRequest().authenticated()
+                //基于url的访问控制
+                .anyRequest().access("@baseUrlControl.canAccess(request,authentication)")
                 .and()
                 .headers().cacheControl();
         // 放入自定义拦截器

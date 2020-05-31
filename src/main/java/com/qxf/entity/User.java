@@ -1,9 +1,11 @@
 package com.qxf.entity;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -48,6 +50,16 @@ public class User implements Serializable,UserDetails {
     private List<Role> roles;
 
     private String roleName;
+
+    private List<Permission> permissions;
+
+    public List<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<Permission> permissions) {
+        this.permissions = permissions;
+    }
 
     public String getRoleName() {
         return roleName;
@@ -103,7 +115,18 @@ public class User implements Serializable,UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        // 实现基于url的访问控制
+        List <SimpleGrantedAuthority> list = null;
+        List<Permission> permissionList = getPermissions();
+        if (permissionList !=null && permissionList.size() > 0){
+            list = new ArrayList<>(permissionList.size());
+            SimpleGrantedAuthority simpleGrantedAuthority = null;
+            for (Permission p : permissionList){
+                simpleGrantedAuthority = new SimpleGrantedAuthority(p.getUrl());
+                list.add(simpleGrantedAuthority);
+            }
+        }
+        return list;
     }
 
     public String getPassword() {

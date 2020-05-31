@@ -1,9 +1,11 @@
 package com.qxf.service.impl;
 
+import com.qxf.dao.PermissionDao;
 import com.qxf.dao.RoleDao;
 import com.qxf.dao.UserDao;
 
 import com.qxf.dao.UserRoleDao;
+import com.qxf.entity.Permission;
 import com.qxf.entity.Role;
 import com.qxf.entity.User;
 import com.qxf.entity.UserRole;
@@ -15,6 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -37,6 +40,9 @@ public class UserServiceImpl implements UserService,UserDetailsService{
     private UserRoleDao userRoleDao;
 
     @Autowired
+    private PermissionDao permissionDao;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
@@ -46,6 +52,13 @@ public class UserServiceImpl implements UserService,UserDetailsService{
             //设置角色
             List<Role> roles = roleDao.getRolesByUserId(user.getId());
             user.setRoles(roles);
+
+            // 设置权限，实现基于url的访问控制
+            List<Permission> permissions = new ArrayList<>();
+            for (Role role : roles){
+                permissions.addAll(permissionDao.getPermissionListByRoleId(role.getId()));
+            }
+            user.setPermissions(permissions);
         }
         return user;
     }
