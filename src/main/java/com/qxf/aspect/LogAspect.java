@@ -7,6 +7,7 @@ import com.qxf.entity.OperateLog;
 
 import com.qxf.util.HttpContextUtil;
 import com.qxf.util.IPUtil;
+import com.qxf.util.UserInfoUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,10 +20,13 @@ import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -80,10 +84,11 @@ public class LogAspect {
                     params += "  " + paramNames[i] + ": " + args[i];
                 }
             }
-            User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            com.qxf.entity.User user = userDao.getUserByUsername(authUser.getUsername());
+
             // 获取request
             HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
+            // 请求头的用户名
+            String currentUsername = request.getHeader("currentUsername");
             logger.info("执行请求 {} 耗时 {} 毫秒",request.getRequestURI(),time);
             OperateLog sysLog = new OperateLog();
             sysLog.setId(UUID.randomUUID().toString().replace("-",""));
@@ -92,7 +97,7 @@ public class LogAspect {
             sysLog.setParams(params);
             sysLog.setMethod(request.getMethod());
             sysLog.setCreateTime(new Date());
-            sysLog.setUserId(user.getId());
+            sysLog.setUserId(UserInfoUtil.getUserIdByUsername(currentUsername));
             sysLog.setIsSuccess(1);
             // 保存操作日志
             operateLogDao.addOperateLog(sysLog);

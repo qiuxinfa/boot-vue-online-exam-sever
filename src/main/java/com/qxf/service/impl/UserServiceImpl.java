@@ -10,6 +10,7 @@ import com.qxf.entity.Role;
 import com.qxf.entity.User;
 import com.qxf.entity.UserRole;
 import com.qxf.service.UserService;
+import com.qxf.util.UserInfoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -49,6 +50,7 @@ public class UserServiceImpl implements UserService,UserDetailsService{
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userDao.getUserByUsername(username);
         if (user != null){
+            UserInfoUtil.setUserIdByUsername(username,user.getId());
             //设置角色
             List<Role> roles = roleDao.getRolesByUserId(user.getId());
             user.setRoles(roles);

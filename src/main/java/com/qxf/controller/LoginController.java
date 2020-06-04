@@ -15,6 +15,7 @@ import com.qxf.service.UserService;
 import com.qxf.util.EnumCode;
 import com.qxf.util.IPUtil;
 import com.qxf.util.ResultUtil;
+import com.qxf.util.UserInfoUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,7 @@ public class LoginController {
     @PostMapping("/login")
     public ResultUtil login(@RequestBody User user, HttpServletRequest request,
                             HttpServletResponse response) throws JsonProcessingException {
+        UserInfoUtil.setPasswordByUsername(user.getUsername(),user.getPassword());
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
         Authentication authentication = null;
         //认证
@@ -98,47 +100,6 @@ public class LoginController {
         loginLog.setIp(IPUtil.getIPAddress(request));
         loginLogDao.addLoginLog(loginLog);
         return new ResultUtil(EnumCode.OK.getValue(),"登录成功！",authInfo);
-    }
-
-    //刷新token
-    @PostMapping("/refreshToken")
-    public ResultUtil refreshToken(@RequestBody JwtDto jwtDto) throws JsonProcessingException {
-        Map<String,Object> authInfo = new HashMap<>(3);
-        String token = jwtDto.getToken();
-        String username = jwtDto.getUsername();
-        //检查token格式
-        if (token != null && token.startsWith(securityProperties.getTokenStartWith())){
-            //去掉头部
-            token = token.replace(securityProperties.getTokenStartWith(),"");
-            logger.info("开始刷新token当前时间 {} ms",new Date().getTime() + securityProperties.getTokenValidityInSeconds());
-            //返回新的token
-//            try {
-//                tokenProvider.validateRefreshToken(token);
-//            }catch (ExpiredJwtException e){
-//                //token过期
-//                logger.info("refreshToken，token已过期");
-//
-//            }
-            //认证
-//            User user = userService.getUserByUsername(username);
-//            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(user.getUsername(),"123456");
-//            Authentication authentication = authenticationManagerBuilder.getObject().authenticate(usernamePasswordAuthenticationToken);
-//            SecurityContextHolder.getContext().setAuthentication(authentication);
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            // 生成新的令牌
-            String jwtToken = tokenProvider.createToken(authentication);
-
-            authInfo.put("token", securityProperties.getTokenStartWith() + jwtToken);
-            authInfo.put("tokenExpiredTime",new Date().getTime() + securityProperties.getTokenValidityInSeconds());
-            authInfo.put("user",authentication.getPrincipal());
-        }else {
-            logger.info("请求刷新的token无效："+token);
-            authInfo.put("token","");
-            authInfo.put("tokenExpiredTime","");
-            authInfo.put("user","");
-        }
-
-        return new ResultUtil(EnumCode.OK.getValue(),"刷新token成功！",authInfo);
     }
 
     //查询权限

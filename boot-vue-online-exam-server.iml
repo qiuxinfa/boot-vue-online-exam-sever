@@ -103,5 +103,10 @@
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-websocket:2.1.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-messaging:5.1.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-websocket:5.1.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.44" level="project" />
+    <orderEntry type="library" name="Maven: cn.hutool:hutool-all:4.3.2" level="project" />
   </component>
 </module>

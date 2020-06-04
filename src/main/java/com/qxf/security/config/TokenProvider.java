@@ -1,19 +1,25 @@
 package com.qxf.security.config;
 
 import com.qxf.security.property.SecurityProperties;
+import com.qxf.util.RefreshTokenUtil;
+import com.qxf.util.UserInfoUtil;
+import com.qxf.websocket.WebSocketServer;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.io.IOException;
 import java.security.Key;
 import java.util.Arrays;
 import java.util.Collection;
@@ -31,6 +37,12 @@ import org.slf4j.LoggerFactory;
 @Component
 public class TokenProvider implements InitializingBean {
     private static Logger logger = LoggerFactory.getLogger(TokenProvider.class);
+
+    @Autowired
+    private RefreshTokenUtil refreshTokenUtil;
+
+    @Autowired
+    private SecurityProperties securityProperties;
 
     private final SecurityProperties properties;
     private static final String AUTHORITIES_KEY = "auth";
@@ -100,7 +112,7 @@ public class TokenProvider implements InitializingBean {
         return new UsernamePasswordAuthenticationToken(principal, token, authorities);
     }
 
-    boolean validateToken(String authToken){
+    boolean validateToken(String authToken,String username){
         try {
             Jwts.parser().setSigningKey(key).parseClaimsJws(authToken);
             return true;
@@ -109,7 +121,20 @@ public class TokenProvider implements InitializingBean {
             e.printStackTrace();
         } catch (ExpiredJwtException e) {
             logger.info("Expired JWT token.");
-            e.printStackTrace();
+            if (canRefreshToken()){
+                // 在规定的过期时间内，可以刷新token
+                String refreshToken = refreshTokenUtil.refreshToken(username, UserInfoUtil.getPasswordByUsername(username));
+                logger.info("刷新token： "+refreshToken);
+                try {
+                    WebSocketServer.sendInfo(securityProperties.getTokenStartWith() + refreshToken,UserInfoUtil.getUserIdByUsername(username));
+                }catch (IOException e1){
+                    logger.info("推送刷新token失败");
+                }
+            }else {
+                logger.info("token过期超过了 {} 分钟，无法刷新",refreshInterval/1000/60);
+                e.printStackTrace();
+            }
+
         } catch (UnsupportedJwtException e) {
             logger.info("Unsupported JWT token.");
             e.printStackTrace();
@@ -132,7 +157,7 @@ public class TokenProvider implements InitializingBean {
         return createToken(getAuthentication(token));
     }
 
-    public boolean mustRefreshToken() {
+    public boolean canRefreshToken() {
         Long diffTime = (new Date()).getTime() - expiredTime.getTime();
         //token将要过期5分钟之内刷新token
         return  diffTime >=0 && diffTime <= refreshInterval;

@@ -73,6 +73,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // 账号相关，其中"/api/file/**"和头像上传相关
                 .antMatchers("/auth/**","/api/file/**").permitAll()
+                // webSocket
+                .antMatchers("/ws/**").permitAll()
                 // 诊断点
                 .antMatchers("/actuator/**").permitAll()
                 // 静态资源

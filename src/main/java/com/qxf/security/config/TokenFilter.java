@@ -38,10 +38,13 @@ public class TokenFilter extends GenericFilterBean {
             throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         String token = resolveToken(httpServletRequest);
+        // 请求头的用户名
+        String currentUsername = httpServletRequest.getHeader("currentUsername");
+
         String requestRri = httpServletRequest.getRequestURI();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         // 如果上下文没有用户信息，并且token有效（排除了登录，因为登录是没有token的），
-        if (StringUtils.hasText(token) && tokenProvider.validateToken(token)) {
+        if (StringUtils.hasText(token) && tokenProvider.validateToken(token,currentUsername)) {
             //从token中获取用户信息
             if (authentication == null){
                 authentication = tokenProvider.getAuthentication(token);
