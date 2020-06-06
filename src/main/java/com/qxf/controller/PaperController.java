@@ -43,6 +43,17 @@ public class PaperController {
         return examService.addPaperByRandom(paperDto);
     }
 
+    @PostMapping("/update")
+    @MyLog
+    public ResultUtil updatePaper(@RequestBody PaperDto paperDto){
+        Integer cnt = examService.updatePaper(paperDto);
+        String msg = "发布考试失败";
+        if (cnt > 0){
+            msg = "发布考试成功";
+        }
+        return new ResultUtil(EnumCode.OK.getValue(),msg);
+    }
+
     @GetMapping("/count")
     @MyLog
     public ResultUtil countByType(){

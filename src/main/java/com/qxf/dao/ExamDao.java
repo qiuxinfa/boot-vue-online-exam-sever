@@ -1,6 +1,7 @@
 package com.qxf.dao;
 
 import com.github.pagehelper.Page;
+import com.qxf.dto.PaperDto;
 import com.qxf.entity.Exam;
 import org.apache.ibatis.annotations.Param;
 
@@ -21,7 +22,7 @@ public interface ExamDao {
      * @return java.util.List<com.qxf.entity.Exam>
      **/
     List<Exam> getListByPage(@Param("name") String name,@Param("isPublish") Integer isPublish);
-
+    Integer updatePaper(PaperDto paperDto);
     /**
      * 通过ID查询单条数据
      *

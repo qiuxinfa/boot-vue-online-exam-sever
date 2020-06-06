@@ -23,6 +23,7 @@ public interface ExamService {
 
     List<Exam> getListByPage(String name,Integer isPublish);
 
+    Integer updatePaper(PaperDto paperDto);
     /**
      * 通过ID查询单条数据
      *

@@ -9,6 +9,7 @@ import java.io.Serializable;
  * @Date 2020/5/27 19:44
  **/
 public class PaperDto implements Serializable{
+    private String id;
     private String name;
     private String examDesc;
     private Integer fillNumber;
@@ -20,6 +21,23 @@ public class PaperDto implements Serializable{
     private Double singleScore;
     private Double multiScore;
     private Integer totalTime;
+    private Integer isPublish;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Integer getIsPublish() {
+        return isPublish;
+    }
+
+    public void setIsPublish(Integer isPublish) {
+        this.isPublish = isPublish;
+    }
 
     public String getName() {
         return name;

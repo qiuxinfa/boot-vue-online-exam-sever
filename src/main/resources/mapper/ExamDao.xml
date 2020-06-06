@@ -30,7 +30,7 @@
     <!--分页查询 考试列表或试卷列表-->
     <select id="getListByPage" parameterType="string" resultMap="ExamMap">
         select
-        id,name,create_time,update_time,exam_desc, start_date, end_date, total_time, major, institute, exam_type, single_score, multi_score, judge_score, fill_score, total_score, single_ids, multi_ids, judge_ids, fill_ids
+        id,name,create_time,update_time,exam_desc, start_date, end_date, total_time, major, institute, exam_type, single_score, multi_score, judge_score, fill_score, total_score, single_ids, multi_ids, judge_ids, fill_ids,is_publish
         from boot_vue_online_exam.exam
         where  1 = 1
         <if test="isPublish != null">
@@ -41,7 +41,10 @@
         </if>
         ORDER BY create_time DESC, update_time DESC
     </select>
-
+    <!--修改试卷状态-->
+    <update id="updatePaper">
+        UPDATE exam SET is_publish = #{isPublish} WHERE id = #{id}
+    </update>
     <!--查询单个-->
     <select id="queryById" resultMap="ExamMap">
         select
@@ -175,6 +178,9 @@
             </if>
             <if test="fillIds != null and fillIds != ''">
                 fill_ids = #{fillIds},
+            </if>
+            <if test="isPublish != null">
+                is_publish = #{isPublish},
             </if>
         </set>
         where id = #{id}

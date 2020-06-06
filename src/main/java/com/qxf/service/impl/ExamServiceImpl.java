@@ -194,6 +194,11 @@ public class ExamServiceImpl implements ExamService {
         return examDao.getListByPage(name,isPublish);
     }
 
+    @Override
+    public Integer updatePaper(PaperDto paperDto) {
+        return examDao.updatePaper(paperDto);
+    }
+
     /**
      * 通过ID查询单条数据
      *
