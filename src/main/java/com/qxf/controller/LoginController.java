@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.qxf.dao.LoginLogDao;
 import com.qxf.dao.PermissionDao;
 import com.qxf.dao.RoleDao;
-import com.qxf.dto.JwtDto;
 import com.qxf.entity.LoginLog;
 import com.qxf.entity.Permission;
 import com.qxf.entity.Role;
@@ -24,7 +23,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;

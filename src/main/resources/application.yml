@@ -4,12 +4,19 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/boot_vue_online_exam?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/boot_vue_online_exam?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false&nullCatalogMeansCurrent=true
+#    url: jdbc:mysql://localhost:3306/boot_vue_online_exam?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 19930919
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       max-active: 10
+  #activiti配置
+  activiti:
+    check-process-definitions: true
+    database-schema-update: true
+    async-executor-activate: false   # 是否打开异步执行器
+    history-level: full
 
 #mybatis配置
 mybatis:
@@ -38,3 +45,22 @@ jwt:
   online-key: online-token
   # 验证码
   code-key: code-key
+
+
+#spring.activiti.database-schema-update=true
+#spring.activiti.check-process-definitions=true
+#spring.activiti.process-definition-location-prefix = classpath:/processes/
+#spring.activiti.job-executor-activate=false
+
+#关闭activiti的定时任务
+#spring.activiti.async-executor-activate=true
+#
+##    process-definition-location-suffixes:
+##      - **.bpmn
+##      - **.bpmn20.xml
+#spring.activiti.history-level = full
+
+
+#打印activiti执行的sql
+#logging.level.org.activiti.engine.impl.persistence.entity.JobEntity=info
+#logging.level.org.activiti.engine.impl.persistence.entity=trace
