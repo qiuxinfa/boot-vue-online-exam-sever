@@ -1,12 +1,16 @@
 package com.qxf.security.config;
 
+import com.qxf.dao.PermissionDao;
+import com.qxf.entity.Permission;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +24,10 @@ import java.util.Collection;
  **/
 @Component
 public class BaseUrlControl {
+
+    @Autowired
+    private PermissionDao permissionDao;
+
     private static Logger logger = LoggerFactory.getLogger(BaseUrlControl.class);
     /**
      * 判断请求的url是否有权访问
@@ -63,7 +71,13 @@ public class BaseUrlControl {
                 }
             }
         }
-
+        Permission permission = new Permission();
+        permission.setUrl(url);
+        if (CollectionUtils.isEmpty(permissionDao.queryAll(permission))){
+            // 如果数据库没有配置权限，则默认有权限访问
+            logger.info("数据库没有配置该url权限，默认有权限访问 {} ",url);
+            return true;
+        }
         logger.info("没有权限访问 {} ",url);
 
         return flag;
