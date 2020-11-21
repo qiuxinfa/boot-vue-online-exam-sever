@@ -1,5 +1,8 @@
 package com.qxf.dto;
 
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.write.style.ColumnWidth;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,19 +12,28 @@ import java.util.Date;
  * @Author qiuxinfa
  * @Date 2020/5/24 21:33
  **/
+@ColumnWidth(25)
 public class QuestionDto implements Serializable{
     private String id;
+    @ExcelProperty("题目")
     private String questionContent;   //题目
-    private String questionAnswer;
+    @ExcelProperty("选项A")
     private String choiceA;
+    @ExcelProperty("选项B")
     private String choiceB;
+    @ExcelProperty("选项C")
     private String choiceC;
+    @ExcelProperty("选项D")
     private String choiceD;
+    @ExcelProperty("答案")
+    private String questionAnswer;
+    @ExcelProperty("答案解析")
+    private String questionExplain;
+    private Integer questionLevel;       //难度等级
+    @ExcelProperty("难度等级")
+    private String questionLevelStr;    //难度等级
     private Date createTime;
     private Date updateTime;
-    private Integer questionLevel;       //难度等级
-    private String questionLevelStr;    //难度等级
-    private String questionExplain;
     //问题类型（填空题，判断题，单选题，多选题），这个暂时没有用上，如果前端需要统一展示，则会用上
     private String typeStr;
 
