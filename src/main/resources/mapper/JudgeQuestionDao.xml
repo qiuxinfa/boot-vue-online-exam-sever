@@ -133,4 +133,12 @@
         delete from boot_vue_online_exam.judge_question where id = #{id}
     </delete>
 
+    <!--批量插入-->
+    <insert id="batchInsert">
+        INSERT INTO judge_question(id,create_time,question_content,question_answer,question_explain,question_level) VALUES
+        <foreach collection="list" item="question" separator=",">
+            (#{question.id}, #{question.createTime},#{question.questionContent}, #{question.questionAnswer}, #{question.questionExplain}, #{question.questionLevel})
+        </foreach>
+    </insert>
+
 </mapper>

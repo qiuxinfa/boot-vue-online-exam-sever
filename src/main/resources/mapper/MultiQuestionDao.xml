@@ -162,4 +162,12 @@
         delete from boot_vue_online_exam.multi_question where id = #{id}
     </delete>
 
+    <!--批量插入-->
+    <insert id="batchInsert">
+        INSERT INTO multi_question(id,create_time,question_content,question_answer,question_explain,question_level,choice_A,choice_B,choice_C,choice_D) VALUES
+        <foreach collection="list" item="question" separator=",">
+            (#{question.id}, #{question.createTime},#{question.questionContent}, #{question.questionAnswer}, #{question.questionExplain}, #{question.questionLevel}, #{question.choiceA}, #{question.choiceB}, #{question.choiceC}, #{question.choiceD})
+        </foreach>
+    </insert>
+
 </mapper>

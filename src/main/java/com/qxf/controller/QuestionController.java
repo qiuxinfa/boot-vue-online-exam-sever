@@ -1,7 +1,9 @@
 package com.qxf.controller;
 
 import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.ExcelWriter;
+import com.alibaba.excel.read.metadata.ReadSheet;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -15,10 +17,16 @@ import com.qxf.service.SingleQuestionService;
 import com.qxf.util.EnumCode;
 import com.qxf.util.FileUtils;
 import com.qxf.util.ResultUtil;
+import com.qxf.util.excel.FillListener;
+import com.qxf.util.excel.JudgeListener;
+import com.qxf.util.excel.MultiListener;
+import com.qxf.util.excel.SingleListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -70,6 +78,7 @@ public class QuestionController {
         return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,pageInfo.getTotal());
     }
 
+    // 导出题库
     @PostMapping("/exportExcel")
     public void exportExcel(HttpServletResponse response){
         ExcelWriter excelWriter = null;
@@ -120,7 +129,7 @@ public class QuestionController {
         }
     }
 
-    
+    // 下载导入模板
     @PostMapping("/template/download")
     public void downloadTemplate(HttpServletResponse response){
         Resource resource = resourceLoader.getResource("classpath:template/questionTemplate.xlsx");
@@ -129,5 +138,32 @@ public class QuestionController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // 导入题库
+    @PostMapping("/import")
+    public ResultUtil importExcel(MultipartFile file){
+        ExcelReader excelReader = null;
+        try {
+            excelReader = EasyExcel.read(file.getInputStream()).build();
+            FillListener fillListener = new FillListener(fillQuestionService);
+            JudgeListener judgeListener = new JudgeListener(judgeQuestionService);
+            SingleListener singleListener = new SingleListener(singleQuestionService);
+            MultiListener multiListener = new MultiListener(multiQuestionService);
+            ReadSheet sheet0 = EasyExcel.readSheet(0).registerReadListener(fillListener).headRowNumber(1).build();
+            ReadSheet sheet1 = EasyExcel.readSheet(1).registerReadListener(judgeListener).headRowNumber(1).build();
+            ReadSheet sheet2 = EasyExcel.readSheet(2).registerReadListener(singleListener).headRowNumber(1).build();
+            ReadSheet sheet3 = EasyExcel.readSheet(3).registerReadListener(multiListener).headRowNumber(1).build();
+            excelReader.read(sheet0,sheet1,sheet2,sheet3);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResultUtil(EnumCode.OK.getValue(),"导入失败");
+        }finally {
+            if (excelReader != null) {
+                // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
+                excelReader.finish();
+            }
+        }
+        return new ResultUtil(EnumCode.OK.getValue(),"导入成功");
     }
 }

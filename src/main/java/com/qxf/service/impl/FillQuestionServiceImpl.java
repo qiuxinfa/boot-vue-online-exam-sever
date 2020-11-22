@@ -5,6 +5,7 @@ import com.qxf.dto.QuestionDto;
 import com.qxf.entity.FillQuestion;
 import com.qxf.service.FillQuestionService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,6 +20,14 @@ import java.util.List;
 public class FillQuestionServiceImpl implements FillQuestionService {
     @Resource
     private FillQuestionDao fillQuestionDao;
+
+    @Override
+    public int batchInsert(List<FillQuestion> list) {
+        if (CollectionUtils.isEmpty(list)){
+            return 0;
+        }
+        return fillQuestionDao.batchInsert(list);
+    }
 
     @Override
     public List<QuestionDto> getListByPage(String content) {

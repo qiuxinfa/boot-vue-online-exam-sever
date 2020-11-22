@@ -13,6 +13,7 @@ import java.util.List;
  * @since 2020-05-17 11:25:40
  */
 public interface JudgeQuestionDao {
+    int batchInsert(List<JudgeQuestion> list);
     int getCount();
 
     List<QuestionDto> getListByPage(@Param("content") String content);

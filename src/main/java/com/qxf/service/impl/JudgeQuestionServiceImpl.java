@@ -5,6 +5,7 @@ import com.qxf.dto.QuestionDto;
 import com.qxf.entity.JudgeQuestion;
 import com.qxf.service.JudgeQuestionService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,6 +20,14 @@ import java.util.List;
 public class JudgeQuestionServiceImpl implements JudgeQuestionService {
     @Resource
     private JudgeQuestionDao judgeQuestionDao;
+
+    @Override
+    public int batchInsert(List<JudgeQuestion> list) {
+        if (CollectionUtils.isEmpty(list)){
+            return 0;
+        }
+        return judgeQuestionDao.batchInsert(list);
+    }
 
     @Override
     public List<QuestionDto> getListByPage(String content) {

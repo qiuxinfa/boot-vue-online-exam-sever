@@ -12,6 +12,7 @@ import java.util.List;
  * @since 2020-05-17 11:25:40
  */
 public interface MultiQuestionService {
+    int batchInsert(List<MultiQuestion> list);
     List<QuestionDto> getListByPage(String content);
     /**
      * 通过ID查询单条数据

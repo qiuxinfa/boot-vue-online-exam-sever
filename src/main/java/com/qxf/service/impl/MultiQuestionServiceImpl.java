@@ -5,6 +5,7 @@ import com.qxf.dto.QuestionDto;
 import com.qxf.entity.MultiQuestion;
 import com.qxf.service.MultiQuestionService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,6 +20,14 @@ import java.util.List;
 public class MultiQuestionServiceImpl implements MultiQuestionService {
     @Resource
     private MultiQuestionDao multiQuestionDao;
+
+    @Override
+    public int batchInsert(List<MultiQuestion> list) {
+        if (CollectionUtils.isEmpty(list)){
+            return 0;
+        }
+        return multiQuestionDao.batchInsert(list);
+    }
 
     @Override
     public List<QuestionDto> getListByPage(String content) {

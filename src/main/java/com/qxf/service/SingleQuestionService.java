@@ -12,6 +12,8 @@ import java.util.List;
  * @since 2020-05-17 11:25:40
  */
 public interface SingleQuestionService {
+    int batchInsert(List<SingleQuestion> list);
+
     List<QuestionDto> getListByPage(String content);
     /**
      * 通过ID查询单条数据

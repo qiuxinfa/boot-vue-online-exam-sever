@@ -5,6 +5,7 @@ import com.qxf.dto.QuestionDto;
 import com.qxf.entity.SingleQuestion;
 import com.qxf.service.SingleQuestionService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,6 +20,14 @@ import java.util.List;
 public class SingleQuestionServiceImpl implements SingleQuestionService {
     @Resource
     private SingleQuestionDao singleQuestionDao;
+
+    @Override
+    public int batchInsert(List<SingleQuestion> list) {
+        if (CollectionUtils.isEmpty(list)){
+            return 0;
+        }
+        return singleQuestionDao.batchInsert(list);
+    }
 
     @Override
     public List<QuestionDto> getListByPage(String content) {
