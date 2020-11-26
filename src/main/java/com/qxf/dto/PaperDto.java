@@ -22,6 +22,42 @@ public class PaperDto implements Serializable{
     private Double multiScore;
     private Integer totalTime;
     private Integer isPublish;
+    private String fillIds;
+    private String judgeIds;
+    private String singleIds;
+    private String multiIds;
+
+    public String getFillIds() {
+        return fillIds;
+    }
+
+    public void setFillIds(String fillIds) {
+        this.fillIds = fillIds;
+    }
+
+    public String getJudgeIds() {
+        return judgeIds;
+    }
+
+    public void setJudgeIds(String judgeIds) {
+        this.judgeIds = judgeIds;
+    }
+
+    public String getSingleIds() {
+        return singleIds;
+    }
+
+    public void setSingleIds(String singleIds) {
+        this.singleIds = singleIds;
+    }
+
+    public String getMultiIds() {
+        return multiIds;
+    }
+
+    public void setMultiIds(String multiIds) {
+        this.multiIds = multiIds;
+    }
 
     public String getId() {
         return id;

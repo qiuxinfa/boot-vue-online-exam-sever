@@ -112,6 +112,61 @@ public class ExamServiceImpl implements ExamService {
         }
     }
 
+    @Override
+    public ResultUtil createPaper(PaperDto paperDto) {
+        Integer fillNumber,judgeNumber,singleNumber,multiNumber;
+        if ("".equals(paperDto.getFillIds())){
+            fillNumber = 0;
+        }else {
+            fillNumber = paperDto.getFillIds().split(",").length;
+        }
+
+        if ("".equals(paperDto.getJudgeIds())){
+            judgeNumber = 0;
+        }else {
+            judgeNumber = paperDto.getJudgeIds().split(",").length;
+        }
+
+        if ("".equals(paperDto.getSingleIds())){
+            singleNumber = 0;
+        }else {
+            singleNumber = paperDto.getSingleIds().split(",").length;
+        }
+
+        if ("".equals(paperDto.getMultiIds())){
+            multiNumber = 0;
+        }else {
+            multiNumber = paperDto.getMultiIds().split(",").length;
+        }
+
+        //计算总分
+        Double totalScore = fillNumber * paperDto.getFillScore() + judgeNumber * paperDto.getJudgeScore() +
+                singleNumber * paperDto.getSingleScore() + multiNumber * paperDto.getMultiScore();
+
+        Exam exam = new Exam();
+        exam.setId(UUID.randomUUID().toString().replace("-",""));
+        exam.setCreateTime(new Date());
+        exam.setName(paperDto.getName());
+        exam.setExamDesc(paperDto.getExamDesc());
+        exam.setFillIds(paperDto.getFillIds());
+        exam.setJudgeIds(paperDto.getJudgeIds());
+        exam.setSingleIds(paperDto.getSingleIds());
+        exam.setMultiIds(paperDto.getMultiIds());
+        exam.setTotalTime(paperDto.getTotalTime());
+        exam.setFillScore(paperDto.getFillScore());
+        exam.setJudgeScore(paperDto.getJudgeScore());
+        exam.setSingleScore(paperDto.getSingleScore());
+        exam.setMultiScore(paperDto.getMultiScore());
+        exam.setTotalScore(totalScore);
+        exam.setIsPublish(0);
+        int count = examDao.insert(exam);
+        if (count > 0){
+            return new ResultUtil(EnumCode.OK.getValue(),"生成试卷成功");
+        }else {
+            return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"生成试卷失败");
+        }
+    }
+
     private void randomListForIds(String ids,List<QuestionDto> list,Integer count){
         ids = list.remove(new Random().nextInt(list.size())).getId();
         for (int i = 1; i < count;i++){

@@ -18,7 +18,7 @@ public interface ExamService {
     Map<String,Integer> getCount();
 
     ResultUtil addPaperByRandom(PaperDto paperDto);
-
+    ResultUtil createPaper(PaperDto paperDto);
     Map<String,List<?>> getExamDetail(Exam exam);
 
     List<Exam> getListByPage(String name,Integer isPublish);

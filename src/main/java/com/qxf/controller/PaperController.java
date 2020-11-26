@@ -43,6 +43,13 @@ public class PaperController {
         return examService.addPaperByRandom(paperDto);
     }
 
+    //自由选题
+    @PostMapping("/createPaper")
+    @MyLog
+    public ResultUtil createPaper(@RequestBody PaperDto paperDto){
+        return examService.createPaper(paperDto);
+    }
+
     @PostMapping("/update")
     @MyLog
     public ResultUtil updatePaper(@RequestBody PaperDto paperDto){

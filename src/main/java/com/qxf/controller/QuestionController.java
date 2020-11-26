@@ -24,6 +24,7 @@ import com.qxf.util.excel.SingleListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -59,10 +60,26 @@ public class QuestionController {
 
     @GetMapping("/list")
     @MyLog
-    public Object getListByPage(Integer startPage,Integer pageSize,String content,String questionType){
-        PageHelper.startPage(startPage,pageSize);
+    public Object getListByPage(Integer startPage,Integer pageSize, String content,
+                                String questionType,String notPage){
         List<QuestionDto> list = null;
-        //根据类型查询题库
+        if (StringUtils.isEmpty(notPage)){
+            PageHelper.startPage(startPage,pageSize);
+            //根据类型查询题库
+            list = getQuestionDtos(content, questionType);
+            PageInfo<QuestionDto> pageInfo = new PageInfo<>(list);
+            return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,pageInfo.getTotal());
+        }else {
+            // 不分页
+            //根据类型查询题库
+            list = getQuestionDtos(content, questionType);
+            return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list);
+        }
+
+    }
+
+    private List<QuestionDto> getQuestionDtos(String content, String questionType) {
+        List<QuestionDto> list;
         if ("second".equals(questionType)){
             list = judgeQuestionService.getListByPage(content);
         }else if("third".equals(questionType)){
@@ -73,9 +90,7 @@ public class QuestionController {
             //默认查询填空题
             list = fillQuestionService.getListByPage(content);
         }
-
-        PageInfo<QuestionDto> pageInfo = new PageInfo<>(list);
-        return new ResultUtil(EnumCode.OK.getValue(),"请求成功",list,pageInfo.getTotal());
+        return list;
     }
 
     // 导出题库
