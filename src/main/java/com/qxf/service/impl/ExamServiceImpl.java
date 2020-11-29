@@ -8,10 +8,16 @@ import com.qxf.entity.*;
 import com.qxf.service.ExamService;
 import com.qxf.util.EnumCode;
 import com.qxf.util.ResultUtil;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -76,14 +82,14 @@ public class ExamServiceImpl implements ExamService {
             return new ResultUtil(EnumCode.INTERNAL_SERVER_ERROR.getValue(),"多选题数量最多为："+multis.size());
         }
         //开始组卷
-        String fillIds = "";
-        String judgeIds = "";
-        String singleIds = "";
-        String multiIds = "";
-        randomListForIds(fillIds,fills,fillNumber);
-        randomListForIds(judgeIds,judges,judgeNumber);
-        randomListForIds(singleIds,singles,singleNumber);
-        randomListForIds(multiIds,multis,multiNumber);
+        String fillIds = randomListForIds(fills,fillNumber);
+        String judgeIds =randomListForIds(judges,judgeNumber);
+        String singleIds = randomListForIds(singles,singleNumber);
+        String multiIds = randomListForIds(multis,multiNumber);
+
+
+
+
         //计算总分
         Double totalScore = fillNumber * paperDto.getFillScore() + judgeNumber * paperDto.getJudgeScore() +
                 singleNumber * paperDto.getSingleScore() + multiNumber * paperDto.getMultiScore();
@@ -167,11 +173,136 @@ public class ExamServiceImpl implements ExamService {
         }
     }
 
-    private void randomListForIds(String ids,List<QuestionDto> list,Integer count){
-        ids = list.remove(new Random().nextInt(list.size())).getId();
-        for (int i = 1; i < count;i++){
-            ids += ","+list.remove(new Random().nextInt(list.size())).getId();
+    @Override
+    public void exportPaper(String id, HttpServletResponse response) {
+        Exam exam = this.examDao.queryById(id);
+        // 试卷详情
+        Map<String, List<?>> detail = this.getExamDetail(exam);
+        // 填空题
+        List<FillQuestion> fillList = (List<FillQuestion>) detail.get("0");
+        // 判断题
+        List<JudgeQuestion> judgeList = (List<JudgeQuestion>) detail.get("1");
+        // 单选题
+        List<SingleQuestion> singleList = (List<SingleQuestion>) detail.get("2");
+        // 多选题
+        List<MultiQuestion> multiList = (List<MultiQuestion>) detail.get("3");
+
+        String examName = exam.getName();
+        String examDesc = exam.getExamDesc();
+        Integer totalTime = exam.getTotalTime();
+        Double totalScore = exam.getTotalScore();
+
+        XWPFDocument doc = initPaper(exam);
+
+        if (fillList.size() > 0){
+            this.createQuestionType(doc,"填空题");
+            for (int i=0;i<fillList.size();i++){
+                insertQuestion(doc,i,fillList.get(i).getQuestionContent(),null);
+            }
         }
+        if (judgeList.size() > 0){
+            this.createQuestionType(doc,"判断题");
+            for (int i=0;i<judgeList.size();i++){
+                insertQuestion(doc,i,judgeList.get(i).getQuestionContent(),null);
+            }
+        }
+        if (singleList.size() > 0){
+            this.createQuestionType(doc,"单选题");
+            Map<String,String> map = new HashMap<>(4);
+            for (int i=0;i<singleList.size();i++){
+                map.put("A",singleList.get(i).getChoiceA());
+                map.put("B",singleList.get(i).getChoiceB());
+                map.put("C",singleList.get(i).getChoiceC());
+                map.put("D",singleList.get(i).getChoiceD());
+                insertQuestion(doc,i,singleList.get(i).getQuestionContent(),map);
+            }
+        }
+        if (multiList.size() > 0){
+            this.createQuestionType(doc,"多选题");
+            Map<String,String> map = new HashMap<>(4);
+            for (int i=0;i<multiList.size();i++){
+                map.put("A",multiList.get(i).getChoiceA());
+                map.put("B",multiList.get(i).getChoiceB());
+                map.put("C",multiList.get(i).getChoiceC());
+                map.put("D",multiList.get(i).getChoiceD());
+                insertQuestion(doc,i,multiList.get(i).getQuestionContent(),map);
+            }
+        }
+        try {
+            doc.write(response.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 生成试卷初始化
+    private XWPFDocument initPaper(Exam exam){
+        XWPFDocument doc = new XWPFDocument();
+        // 标题
+        XWPFParagraph title = doc.createParagraph();
+        title.setAlignment(ParagraphAlignment.CENTER);
+        XWPFRun titleRun = title.createRun();
+        titleRun.setText(exam.getName());
+        titleRun.setBold(true);
+        titleRun.setFontSize(35);
+        titleRun.addBreak();
+        // 考试介绍
+        XWPFParagraph desc = doc.createParagraph();
+        desc.setAlignment(ParagraphAlignment.LEFT);
+        XWPFRun descRun = desc.createRun();
+        descRun.setText(exam.getExamDesc());
+        descRun.setBold(true);
+        descRun.setFontSize(15);
+        descRun.addBreak();
+        // 考试时间和总分
+        XWPFParagraph score = doc.createParagraph();
+        score.setAlignment(ParagraphAlignment.LEFT);
+        XWPFRun scoreRun = score.createRun();
+        scoreRun.setText("考试时间："+exam.getTotalTime()+" 分钟，   总分："+exam.getTotalScore());
+        scoreRun.setBold(true);
+        scoreRun.setFontSize(15);
+        scoreRun.addBreak();
+
+        return doc;
+    }
+
+    // 创建题目类型标题
+    private void createQuestionType(XWPFDocument doc,String questionType){
+        XWPFParagraph paragraph = doc.createParagraph();
+        paragraph.setAlignment(ParagraphAlignment.LEFT);
+        XWPFRun xwpfRun = paragraph.createRun();
+        xwpfRun.setText(questionType);
+        xwpfRun.setBold(true);
+        xwpfRun.setFontSize(25);
+        xwpfRun.addBreak();
+    }
+
+    private void insertQuestion(XWPFDocument doc,Integer index,String questionContent,Map<String,String> choiceMap){
+        XWPFParagraph question = doc.createParagraph();
+        question.setAlignment(ParagraphAlignment.LEFT);
+        XWPFRun questionRun = question.createRun();
+        questionRun.setText(index+1+". "+questionContent);
+        questionRun.addBreak();
+        // 添加选择题选项
+        if (choiceMap != null){
+            questionRun.setText("A. "+choiceMap.get("A"));
+            questionRun.addBreak();
+            questionRun.setText("B. "+choiceMap.get("B"));
+            questionRun.addBreak();
+            questionRun.setText("C. "+choiceMap.get("C"));
+            questionRun.addBreak();
+            questionRun.setText("C. "+choiceMap.get("D"));
+            questionRun.addBreak();
+        }
+    }
+
+    private String randomListForIds(List<QuestionDto> list,Integer count){
+        String firstId = list.remove(new Random().nextInt(list.size())).getId();
+        StringBuffer ids = new StringBuffer(firstId);
+        for (int i = 1; i < count;i++){
+            ids.append(","+list.remove(new Random().nextInt(list.size())).getId());
+        }
+        return ids.toString();
     }
 
     @Override

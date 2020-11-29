@@ -5,6 +5,7 @@ import com.qxf.dto.PaperDto;
 import com.qxf.entity.Exam;
 import com.qxf.util.ResultUtil;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ public interface ExamService {
 
     ResultUtil addPaperByRandom(PaperDto paperDto);
     ResultUtil createPaper(PaperDto paperDto);
+    void exportPaper(String id, HttpServletResponse response);
     Map<String,List<?>> getExamDetail(Exam exam);
 
     List<Exam> getListByPage(String name,Integer isPublish);

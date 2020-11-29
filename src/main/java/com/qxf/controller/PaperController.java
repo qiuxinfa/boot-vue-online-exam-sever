@@ -11,6 +11,7 @@ import com.qxf.util.ResultUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
@@ -48,6 +49,13 @@ public class PaperController {
     @MyLog
     public ResultUtil createPaper(@RequestBody PaperDto paperDto){
         return examService.createPaper(paperDto);
+    }
+
+    // 导出试卷
+    @PostMapping("/exportPaper")
+    @MyLog
+    public void exportPaper(@RequestBody Map<String,String> map, HttpServletResponse response){
+        examService.exportPaper(map.get("id"),response);
     }
 
     @PostMapping("/update")
