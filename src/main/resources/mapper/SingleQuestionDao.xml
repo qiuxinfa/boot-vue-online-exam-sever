@@ -8,7 +8,7 @@
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="updateId" column="update_id" jdbcType="VARCHAR"/>
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-        <result property="questionContent" column="question_content" jdbcType="VARCHAR"/>
+        <result property="questionContent" column="question_content" jdbcType="LONGVARCHAR"/>
         <result property="choiceA" column="choice_A" jdbcType="VARCHAR"/>
         <result property="choiceB" column="choice_B" jdbcType="VARCHAR"/>
         <result property="choiceC" column="choice_C" jdbcType="VARCHAR"/>
